@@ -67,7 +67,7 @@ oracle:
   inject_alpha: 16000.0  # WorkspaceBench's embedding-replacement scale for Qwen3.6-27B
   k_max: 16
   sft:
-    epochs: 2
+    epochs: 1            # 2 epochs = 4.6 h at 9 s/step on the H100 fallback kernels; 1 for the pilot
     micro_batch: 8
     grad_accum: 4
     lr: 1.0e-4
