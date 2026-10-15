@@ -91,6 +91,7 @@ def main():
         "dtype": "bfloat16",
         "max_model_len": ccfg["max_prompt_tokens"] + ccfg["max_new_tokens"] + 8,
         "gpu_memory_utilization": 0.9,
+        "max_num_seqs": 256,  # one Mamba cache block per decode sequence; 80 GB fits ~326
         "enable_prefix_caching": False,
         "limit_mm_per_prompt": {"image": 0, "video": 0},
     }
