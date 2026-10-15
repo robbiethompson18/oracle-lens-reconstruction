@@ -33,3 +33,8 @@ See `~/.claude/personal-repo-rules.md` (imported above) for the full convention.
 
 Current docs:
 - [Plan — read first; lineages, decisions, recipe, costs, uncertainties](docs/plan.md)
+- [Anthropic paper extraction — J-lens, template lens, oracle lens appendix, layer convention](docs/research/anthropic-paper-oracle-lens.md)
+- [ceselder July code audit — her paper-faithful port, stage by stage, with every unknown](docs/research/ceselder-july-code-audit.md)
+- [ceselder GitHub survey — timeline of her lenses, olens recipe, compute, dependency pain](docs/research/ceselder-github-survey.md)
+- [WorkspaceBench — families, scoring, plug-in interface, their oracle lens checkpoint](docs/research/workspacebench.md)
+- [Compute — Qwen3.6-27B facts, memory/throughput, RunPod prices, software stack](docs/research/compute.md)

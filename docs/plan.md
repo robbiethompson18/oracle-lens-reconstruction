@@ -166,16 +166,19 @@ fall back to slow PyTorch.
 - Stretch: train the oracle on the 11-layer grid with the layer in the prompt (C's trick) so the
   full bench applies; the AR already handles it if trained with a `[Layer NN]` tag.
 
-### Pilot first (1 GPU-day, ~$150)
-Run stages 0–6 at 1/10 scale (6k transcripts, 100k pairs, 30k-start dictionary, 30k teacher
-acts, 50 RL steps) on one H200. Purpose: every integration risk in §5 surfaces here, and the
-per-stage throughput numbers replace my estimates. Only then scale.
+### Pilot first (~5 GPU-hours, $25 of compute, $50–100 with debugging idle)
+Run stages 0–6 at 1/10 scale (6k transcripts, 80k pairs, 40k-start dictionary, 30k teacher
+acts, 50 RL steps) on one GPU (`configs/pilot.yaml`). Purpose: every integration risk in §5
+surfaces here, and the per-stage throughput numbers replace my estimates. Only then scale.
+Update 2026-10-15: running on 1×H100 SXM ($3.99/h; no H200/B200 was available in US RunPod).
+The reconstructor and oracle are two LoRA adapters on one shared base with an early exit at
+block 42 for the reconstructor, so RL fits in 80 GB.
 
 ## 4. Cost and time (RunPod Secure, 2026-10-15 prices)
 
 | Stage | GPUs | hours | $ |
 |---|---|---|---|
-| pilot (all stages, 1/10 scale) | 1×H200 | 20–30 | 110–160 |
+| pilot (all stages, 1/10 scale) | 1×H100 | 5–10 | 25–50 |
 | 0–1 corpus + activations | 1×H200 | 2–4 | 10–20 |
 | 2 reconstructor | 1×H200 | 6–12 | 30–65 |
 | 3–4 dictionary + teacher | 1×H200 | 2 | 10 |
