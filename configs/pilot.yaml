@@ -1,0 +1,93 @@
+# Pilot: 1/10 scale of the full recipe, single GPU. Every number here is a DECISION the paper leaves open
+# unless marked (paper).
+model:
+  name: Qwen/Qwen3.6-27B
+  layer: 42            # output of block 42 of 64 = 66% depth; paper's L67 is a % of depth (66.7%)
+  hidden_size: 5120
+
+paths:
+  root: /work/pilot
+  corpus: corpus
+  acts: acts
+  whitening: whitening
+  ckpt_reconstructor: ckpt_recon
+  dictionary: dictionary
+  teacher: teacher
+  ckpt_oracle_sft: ckpt_oracle_sft
+  ckpt_oracle_rl: ckpt_oracle_rl
+
+corpus:
+  prompt_dataset: HuggingFaceH4/ultrachat_200k
+  prompt_split: train_sft
+  n_transcripts: 6000
+  max_prompt_tokens: 256
+  max_new_tokens: 384
+  temperature: 1.0
+  top_p: 1.0
+  splits: {recon_train: 0.5, dict: 0.2, teacher: 0.2, rl: 0.07, eval: 0.03}
+
+extract:
+  positions_per_transcript: 24
+  target_positions: {recon_train: 80000, dict: 40000, teacher: 30000, rl: 10000, eval: 4000}
+
+whitening:
+  n_positions: 40000
+  ridge_lambda_frac: 0.1
+
+reconstructor:
+  lora_r: 64
+  lora_alpha: 16
+  n_min: 1             # (paper) N ~ U{1..32}
+  n_max: 32
+  n_pairs: null        # all recon_train positions, one pair each, N resampled per epoch
+  epochs: 1
+  batch_size: 64
+  lr: 1.0e-4
+  warmup_steps: 50
+  grad_clip: 1.0
+  eval_rows: 512
+  eval_every: 250
+  save_every: 500
+
+dictionary:
+  lengths: [2, 4, 8, 16, 32]   # (paper)
+  n_starts: 40000
+  embed_batch_size: 256
+
+teacher:
+  n_activations: 30000
+  max_atoms: 16          # (paper) up to sixteen phrases
+  dict_fraction: 0.5     # (paper) random half of the dictionary per datapoint
+  omp_batch_size: 256
+
+oracle:
+  lora_r: 64
+  lora_alpha: 16
+  inject_alpha: 16000.0  # WorkspaceBench's embedding-replacement scale for Qwen3.6-27B
+  k_max: 16
+  sft:
+    epochs: 2
+    micro_batch: 8
+    grad_accum: 4
+    lr: 1.0e-4
+    warmup_steps: 30
+    cosine: true
+    save_every: 500
+  rl:
+    steps: 50
+    prompts_per_step: 16
+    group_size: 8
+    lengths: [2, 4, 8, 16, 32]
+    k_max: 16
+    temperature: 1.0
+    max_new_tokens_slack: 16
+    format_penalty_per_phrase: 0.01
+    format_penalty_per_token: 0.002
+    kl_beta: 0.02
+    lr: 3.0e-5
+    train_micro_batch: 8
+    eval_every: 25
+    eval_rows: 64
+    eval_n: 8
+    eval_k: 10
+    save_every: 25
