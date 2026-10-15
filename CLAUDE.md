@@ -33,6 +33,7 @@ See `~/.claude/personal-repo-rules.md` (imported above) for the full convention.
 
 Current docs:
 - [Plan — read first; lineages, decisions, recipe, costs, uncertainties](docs/plan.md)
+- [Pod gotchas — read before launching or debugging a RunPod run](docs/pod-gotchas.md)
 - [Anthropic paper extraction — J-lens, template lens, oracle lens appendix, layer convention](docs/research/anthropic-paper-oracle-lens.md)
 - [ceselder July code audit — her paper-faithful port, stage by stage, with every unknown](docs/research/ceselder-july-code-audit.md)
 - [ceselder GitHub survey — timeline of her lenses, olens recipe, compute, dependency pain](docs/research/ceselder-github-survey.md)

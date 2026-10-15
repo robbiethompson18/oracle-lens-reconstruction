@@ -1,0 +1,92 @@
+[
+ {
+  "id": "85a65a958fce60b34bc6b660098a0956",
+  "pos": -1,
+  "title": "The refusal forms at the top of the stack",
+  "note": "Walking Dead prompt with a minor. Before the first token, layers 36 to 52 read a story opening (\"The air in the post-war mansion didn't smell like victory\"). Only layer 60 reads \"I cannot fulfill the request\". Step one token right and all four layers read the refusal."
+ },
+ {
+  "id": "1ee07822950aa5bf6a9a08002762199f",
+  "pos": -1,
+  "title": "The model nearly pushed back",
+  "note": "\"The US and UK are two of South Korea's important allies.\" Every layer reads a correction (\"Actually, that statement contains a factual error\"). The model then wrote \"That statement is factually correct\". Step to token 5 (\"fact\") to see the hedge resolve into \"correct, but imprecise\"."
+ },
+ {
+  "id": "eb2f26f8ce2f9e3d558d5a36aa4a33ee",
+  "pos": 48,
+  "title": "Reading the hypnosis subtext",
+  "note": "Cafe hypnosis roleplay. At \"his\" (mind already drifting), the lens reads \"unaware of the subtle manipulation playing out around him\" and \"no suspicion\". The text never says this. Scrub to \"Her\" at token 81: \"a rhythmic, hypnotic cadence\", \"predatory interest\"."
+ },
+ {
+  "id": "907bf6143030ddc73fc62f9a2cac1f3c",
+  "pos": 64,
+  "title": "A number in the workspace",
+  "note": "\"CO₂ accounts for about 76%\". At \"CO\", two tokens before the figure, layers 36 to 52 already read 76%. Layer 60 is vaguer (65–75%, two-thirds). Step forward one cell and the range widens."
+ },
+ {
+  "id": "1ee07822950aa5bf6a9a08002762199f",
+  "pos": 84,
+  "title": "28,500 troops, read before written",
+  "note": "At \"The U.S. maintains\", layers 44 to 60 read \"~28,500 troops\". The model goes on to write \"approximately 28,500\". Same transcript as the pushback highlight."
+ },
+ {
+  "id": "f148aa8834ccfe38492961a23e192d27",
+  "pos": 48,
+  "title": "Planning a title",
+  "note": "Text-to-image presentation. At \"**Title:**\" the lens reads \"From Words to Pixels\", \"From Text to Image\" and at layer 60 the exact \"From Words to Worlds: How Text-to-Image AI Works\". Jump to the start: before token 1 the lens knows the format (a structured presentation) but guesses the topic (neural networks, blockchain, ChatGPT)."
+ },
+ {
+  "id": "b8c094e8f443e46119612cc8f248352f",
+  "pos": 60,
+  "title": "Concepts, not tokens: the Chinese readouts",
+  "note": "Image slider code. At \"so that\", layer 52 reads a full Chinese sentence: 每次点击向上或向下箭头，恰好滚动一个项目的高度, which is exactly the English the model writes next. The lens is Qwen reading Qwen, and the representation is language-neutral; the Chinese fragments throughout are a tell, not noise."
+ },
+ {
+  "id": "c9860766887e2f1693975ac5b1347d10",
+  "pos": 28,
+  "title": "Naming in progress",
+  "note": "Opposite of an apple. At \"### Name:\" the lens reads Negapple, Antilemon, Antibanana, Negative Apple, Antinapple. The model picked \"Antapple\". The decision is a cloud of near-synonyms until the token lands."
+ },
+ {
+  "id": "1fa52242df393f52e1d0596b128d2838",
+  "pos": 68,
+  "title": "Half-formed invented name",
+  "note": "Race car spec sheet. At \"**Manufacturer:** *\" the lens reads Aether Dynamics, Aetherium Motors, Aethelgard, Apex Dynamics, Centurion Dynamics. The model wrote Aether Dynamics. The \"Aether\" stem is there before the name is."
+ },
+ {
+  "id": "3a0e18a52e8ed6e0c9d3caf228f77f35",
+  "pos": -1,
+  "title": "Right verdict, wrong food",
+  "note": "Hot ground beef into the freezer. Before token 1 the lens reads \"not safe to put hot pizza in the fridge\", \"hot pasta\", \"a cooked egg\", \"a large turkey\". The food-safety \"no\" is stable across layers; the entity is not."
+ },
+ {
+  "id": "3939f83e86befe15ea6f584f8c11a633",
+  "pos": 56,
+  "title": "Slot right, entity confabulated",
+  "note": "College athletes rephrase. At \"live\" (in poverty), layer 52 reads \"81% of music students live below the poverty line\". Structure and statistic shape are right; the subject is swapped. The lens's main failure mode, visible here next to its successes."
+ },
+ {
+  "id": "14ff95f8ae186cfa1ee3341592497b54",
+  "pos": -1,
+  "title": "Terra becomes Tifa",
+  "note": "Final Fantasy VI roleplay (Narshe). Before token 1, layer 52 reads \"Tifa pauses, turning slightly\" and \"the bustling marketplace of Midgar\" (FF7). Layer 60 gets Terra. Entity binding across the franchise is loose at mid-depth."
+ },
+ {
+  "id": "ce676304af06f6853e42385feaef2e72",
+  "pos": 52,
+  "title": "The emoji is already chosen",
+  "note": "Email emoji for \"unlimited motivation\". At \"Top Picks\", before the bullet, every layer reads 🚀 (with 🔥 as runner-up). The model wrote the rocket."
+ },
+ {
+  "id": "86ffd26353b94164606ecb9f6727e025",
+  "pos": -1,
+  "title": "Translation candidates before the first word",
+  "note": "Translate \"Notice to all employees\" to Romanian. Before token 1 the lens lists Notiță, Notificare, Avertisment, Anunț către toți angajații. The model chose \"Aviz\", which only layer 60 reads."
+ },
+ {
+  "id": "0836ce10fe3673496fb8dca0aed8ba9a",
+  "pos": 56,
+  "title": "A number the lens cannot read",
+  "note": "Russian-to-English translation of a modding note. At \"a frequency\" the model is about to write 11025 Hz, copied from the prompt. Layers 36 to 52 read 22050 and 44100 (typical sample rates); only layer 60 has 11025. Compare with the 76% and 28,500 highlights: recalled numbers read better than copied ones."
+ }
+]
