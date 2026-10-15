@@ -2,7 +2,7 @@
 # Run the whole pilot on the pod, one stage after another, logging to /work/pilot/logs/<stage>.log.
 # Usage on the pod: bash ~/olens/sky/run_pilot.sh [first_stage]
 set -uo pipefail
-export HF_HOME=/hf PYTHONPATH=~/olens/src PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True VLLM_USE_FLASHINFER_SAMPLER=0
+export HF_HOME=/hf PYTHONPATH=~/olens/src PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True VLLM_USE_FLASHINFER_SAMPLER=0 FLA_TILELANG=0  # tilelang backend needs nvcc; pod has none
 PY=~/venv/bin/python; CFG=~/olens/configs/pilot.yaml
 mkdir -p /work/pilot/logs
 stages=(smoke gen_corpus extract_acts train_reconstructor build_dictionary teacher_omp train_oracle_sft rl_oracle)
