@@ -48,12 +48,12 @@ def load_config(path, overrides=()):
 
 
 def load_model(name, dtype=torch.bfloat16, device="cuda", grad_checkpointing=False):
-    """Load Qwen3.6-27B as its multimodal wrapper (Qwen3_5ForConditionalGeneration).
+    """Load Qwen3.6-27B's text decoder.
 
-    DECISION: load the wrapper rather than the text-only Qwen3_5ForCausalLM class. The checkpoint is
-    stored with `model.language_model.*` keys; the wrapper loads them without any key remapping, and we
-    only ever feed input_ids so the 0.4B vision tower is dead weight (0.8 GB). We assert nothing was
-    randomly initialised, because a silent key mismatch would give a random model that still "runs".
+    DECISION: AutoModelForCausalLM resolves the multimodal checkpoint to the text-only Qwen3_5ForCausalLM
+    (transformers 5.17 remaps the `model.language_model.*` keys; verified on the pod: 53.8 GB, no missing
+    keys). We assert nothing was randomly initialised, because a silent key mismatch would give a random
+    model that still "runs". `text_model()` below copes with either class layout.
     """
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
