@@ -20,7 +20,7 @@ corpus:
   prompt_dataset: HuggingFaceH4/ultrachat_200k
   prompt_split: train_sft
   n_transcripts: 6000
-  max_prompt_tokens: 256
+  max_prompt_tokens: 512
   max_new_tokens: 384
   temperature: 1.0
   top_p: 1.0

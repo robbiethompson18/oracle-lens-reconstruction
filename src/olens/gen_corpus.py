@@ -25,7 +25,7 @@ def load_prompts(cfg, tok):
         if not msgs:
             continue
         text = msgs[0].get("content", "")
-        if not (10 <= len(text) <= 4000) or text in seen:
+        if not (10 <= len(text) <= 2000) or text in seen:
             continue
         seen.add(text)
         out.append(text)
@@ -81,7 +81,10 @@ def main():
         for p in prompts
     ]
     prompt_ids = [list(p["input_ids"]) if hasattr(p, "keys") else list(p) for p in prompt_ids]
-    prompt_ids = [p[: ccfg["max_prompt_tokens"]] for p in prompt_ids]
+    # drop (never truncate) over-long prompts: truncating a rendered chat would cut off the assistant header
+    keep = [i for i, p in enumerate(prompt_ids) if len(p) <= ccfg["max_prompt_tokens"]]
+    prompts, prompt_ids, splits = [prompts[i] for i in keep], [prompt_ids[i] for i in keep], [splits[i] for i in keep]
+    log(f"[corpus] {len(keep)} prompts within {ccfg['max_prompt_tokens']} tokens")
 
     kwargs = {
         "model": cfg["model"]["name"],
