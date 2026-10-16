@@ -10,7 +10,7 @@ import os
 import numpy as np
 import torch
 
-from .common import build_oracle_prompt, newline_id, read_jsonl
+from .common import build_oracle_prompt, end_turn_id, newline_id, read_jsonl
 
 
 class TeacherStore:
@@ -50,7 +50,7 @@ def build_sft_example(store, tok, cfg, row, rng):
     target = []
     for ai in lab["atoms"][:k]:
         target += store.phrases[L][ai] + [nl]
-    target[-1] = tok.convert_tokens_to_ids("<|im_end|>")
+    target[-1] = end_turn_id(tok)
     return {"input_ids": prompt_ids + target, "labels": [-100] * len(prompt_ids) + target, "inject_pos": pos, "act": store.activation(row)}
 
 

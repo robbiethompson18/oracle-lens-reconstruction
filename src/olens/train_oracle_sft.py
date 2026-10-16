@@ -9,7 +9,7 @@ import time
 
 import torch
 
-from .common import EmbedInjector, load_config, load_model, log, lora_config, unwrap_peft
+from .common import EmbedInjector, load_config, load_model, log, logit_head, lora_config, unwrap_peft
 from .oracle_data import TeacherStore, build_sft_example, chunked_ce, collate
 
 
@@ -40,7 +40,7 @@ def main():
     model = get_peft_model(model, lora_config(cfg["oracle"]["lora_r"], cfg["oracle"]["lora_alpha"]), adapter_name="oracle")
     model.print_trainable_parameters()
     inj = EmbedInjector(model, cfg["oracle"]["inject_alpha"])
-    lm_head = unwrap_peft(model).lm_head
+    lm_head = logit_head(model)
     params = [p for p in model.parameters() if p.requires_grad]
     opt = torch.optim.AdamW(params, lr=scfg["lr"], betas=(0.9, 0.95), weight_decay=0.0)
 

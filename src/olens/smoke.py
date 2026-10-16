@@ -7,7 +7,18 @@ import time
 
 import torch
 
-from .common import MARKER_ID, EarlyExit, EmbedInjector, ResidualTap, build_oracle_prompt, load_config, load_model, log, text_model
+from .common import (
+    EarlyExit,
+    EmbedInjector,
+    ResidualTap,
+    build_oracle_prompt,
+    end_turn_id,
+    load_config,
+    load_model,
+    log,
+    marker_id,
+    text_model,
+)
 
 
 def main():
@@ -30,14 +41,16 @@ def main():
 
     ids, pos = build_oracle_prompt(tok, 4, 10)
     log(f"oracle prompt: {len(ids)} tokens, marker at {pos}; tail={tok.decode(ids[pos - 3 : pos + 4])!r} ... {tok.decode(ids[-12:])!r}")
-    assert ids[pos] == MARKER_ID
+    assert ids[pos] == marker_id(tok)
+    eot = end_turn_id(tok)
+    log(f"marker id {marker_id(tok)}, end-of-turn id {eot} ({tok.convert_ids_to_tokens(eot)!r}), bos {tok.bos_token_id}")
 
     chat = tok.apply_chat_template(
         [{"role": "user", "content": "Say hi"}], add_generation_prompt=True, tokenize=False, enable_thinking=False
     )
     log(f"chat render (thinking off): {chat[-80:]!r}")
 
-    x = torch.tensor([tok("The capital of France is", add_special_tokens=False)["input_ids"]], device=model.device)
+    x = torch.tensor([tok("The capital of France is")["input_ids"]], device=model.device)  # default specials: BOS for Gemma, none for Qwen
     tap = ResidualTap(model, cfg["model"]["layer"])
     with torch.inference_mode():
         out = model(input_ids=x, output_hidden_states=True, use_cache=False)
@@ -63,8 +76,9 @@ def main():
         injd = model(input_ids=pid, use_cache=False).logits[0, -1].float()
         inj.clear()
     log(f"injection changes final logits: max diff {(base - injd).abs().max():.2f} (0 would mean the hook did nothing)")
-    emb = tm.embed_tokens.weight.float()
-    log(f"embedding row norms: mean {emb.norm(dim=-1).mean():.2f}, marker {emb[MARKER_ID].norm():.2f}")
+    with torch.inference_mode():
+        emb = tm.embed_tokens(pid)[0].float()  # module output (Gemma scales rows by sqrt(d) here), i.e. what the injector overwrites
+    log(f"embedding output norms: mean {emb.norm(dim=-1).mean():.2f}, marker {emb[pos].norm():.2f}")
     log(f"inject alpha {cfg['oracle']['inject_alpha']}")
 
     t1 = time.time()

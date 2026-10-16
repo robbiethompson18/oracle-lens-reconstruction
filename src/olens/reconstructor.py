@@ -68,7 +68,8 @@ def build_inputs(tok, phrase_ids_list, device):
             tok(RECON_SUFFIX, add_special_tokens=False)["input_ids"],
         )
     pre, suf = _prefix_cache[tok.name_or_path]
-    rows = [pre + list(p) + suf for p in phrase_ids_list]
+    bos = [tok.bos_token_id] if tok.bos_token_id is not None else []  # Gemma needs BOS; Qwen has none
+    rows = [bos + pre + list(p) + suf for p in phrase_ids_list]
     maxlen = max(len(r) for r in rows)
     pad = tok.pad_token_id if tok.pad_token_id is not None else 0
     ids = torch.full((len(rows), maxlen), pad, dtype=torch.long)

@@ -16,9 +16,36 @@ import torch
 import yaml
 
 # DECISION: injection marker. A single existing vocab token that survives as one token inside the chat
-# render. ㈜ (U+321C, id 158983) is what both ceselder's olens and WorkspaceBench's lens use for Qwen3.6.
+# render. ㈜ (U+321C) is what both ceselder's olens and WorkspaceBench's lens use for Qwen3.6 (id 158983 there);
+# it is also a single token for Gemma 4 (id 246566). The id is read from the tokenizer, never hardcoded.
 MARKER = "㈜"
-MARKER_ID = 158983
+
+
+def marker_id(tok):
+    ids = tok(MARKER, add_special_tokens=False)["input_ids"]
+    assert len(ids) == 1, f"marker {MARKER!r} must be one token, got {ids}"
+    return ids[0]
+
+
+def end_turn_id(tok):
+    """The token that closes an assistant turn: <|im_end|> (Qwen) or <turn|> (Gemma 4); eos otherwise."""
+    for t in ("<|im_end|>", "<turn|>"):
+        i = tok.convert_tokens_to_ids(t)
+        if isinstance(i, int) and i >= 0 and i != tok.unk_token_id:
+            return i
+    return tok.eos_token_id
+
+
+def logit_head(model):
+    """lm_head as a callable, with Gemma's final tanh soft-capping applied when the config asks for it, so
+    SFT / RL log-probs match the distribution the model actually samples from."""
+    base = unwrap_peft(model)
+    head = base.lm_head
+    cfg = getattr(base.config, "text_config", None) or base.config
+    cap = getattr(cfg, "final_logit_softcapping", None)
+    if not cap:
+        return head
+    return lambda h: torch.tanh(head(h) / cap) * cap
 
 
 # ---------------------------------------------------------------- config
@@ -48,7 +75,7 @@ def load_config(path, overrides=()):
 
 
 def load_model(name, dtype=torch.bfloat16, device="cuda", grad_checkpointing=False):
-    """Load Qwen3.6-27B's text decoder.
+    """Load the text decoder of a multimodal checkpoint (Qwen3.6/3.8-27B, Gemma 4 31B).
 
     DECISION: AutoModelForCausalLM resolves the multimodal checkpoint to the text-only Qwen3_5ForCausalLM
     (transformers 5.17 remaps the `model.language_model.*` keys; verified on the pod: 53.8 GB, no missing
@@ -58,9 +85,13 @@ def load_model(name, dtype=torch.bfloat16, device="cuda", grad_checkpointing=Fal
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
     tok = AutoTokenizer.from_pretrained(name)
-    model, info = AutoModelForCausalLM.from_pretrained(
-        name, dtype=dtype, device_map={"": device}, attn_implementation="sdpa", output_loading_info=True
-    )
+    kw = {"dtype": dtype, "device_map": {"": device}, "attn_implementation": "sdpa", "output_loading_info": True}
+    try:
+        model, info = AutoModelForCausalLM.from_pretrained(name, **kw)
+    except ValueError:  # no text-only mapping for this architecture: load the full wrapper, text_model() finds the decoder
+        from transformers import AutoModelForImageTextToText
+
+        model, info = AutoModelForImageTextToText.from_pretrained(name, **kw)
     missing = [k for k in info.get("missing_keys", []) if not k.startswith("mtp")]
     assert not missing, f"randomly initialised weights: {missing[:5]} (+{len(missing) - 5})"
     model.config.use_cache = not grad_checkpointing
@@ -282,9 +313,10 @@ def chat_ids(tok, user_text):
 
 def build_oracle_prompt(tok, n, k):
     """Returns (input_ids, marker_pos)."""
+    mid = marker_id(tok)
     ids = chat_ids(tok, ORACLE_INSTRUCTION.format(marker=MARKER, k=k, n=n))
-    hits = [i for i, t in enumerate(ids) if t == MARKER_ID]
-    assert len(hits) == 1, f"marker must appear exactly once as token {MARKER_ID}; got {hits}"
+    hits = [i for i, t in enumerate(ids) if t == mid]
+    assert len(hits) == 1, f"marker must appear exactly once as token {mid}; got {hits}"
     return ids, hits[0]
 
 
@@ -297,7 +329,7 @@ def newline_id(tok):
 def parse_generated_phrases(gen_ids, tok, k):
     """Split generated ids on the newline token; drop empties; stop at eos/im_end; cap at k."""
     nl = newline_id(tok)
-    stop = {tok.eos_token_id, tok.convert_tokens_to_ids("<|im_end|>")}
+    stop = {tok.eos_token_id, end_turn_id(tok)}
     phrases, cur = [], []
     for t in gen_ids:
         t = int(t)

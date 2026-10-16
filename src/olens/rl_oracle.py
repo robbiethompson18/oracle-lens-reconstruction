@@ -21,10 +21,12 @@ from .common import (
     EmbedInjector,
     Whitening,
     build_oracle_prompt,
+    end_turn_id,
     fve_of,
     load_config,
     load_model,
     log,
+    logit_head,
     parse_generated_phrases,
     unwrap_peft,
     whiten_unit,
@@ -138,7 +140,7 @@ def main():
     model.load_adapter(cfg["paths"]["ckpt_oracle_sft"], adapter_name="sft_ref", is_trainable=False)
     model, recon = add_recon_adapter(model, cfg, trainable=False)
     model.set_adapter("oracle")
-    lm_head = unwrap_peft(model).lm_head
+    lm_head = logit_head(model)
     inj = EmbedInjector(model, cfg["oracle"]["inject_alpha"])
     mean_t, W_t = Whitening.load(cfg["paths"]["whitening"]).to_torch(model.device)
     params = [p for n, p in model.named_parameters() if p.requires_grad and ".oracle." in n]
@@ -199,7 +201,7 @@ def main():
                 g = gens[i * G + j]
                 cut = len(g)
                 for t, tid in enumerate(g):
-                    if tid in (tok.eos_token_id, tok.convert_tokens_to_ids("<|im_end|>")):
+                    if tid in (tok.eos_token_id, end_turn_id(tok)):
                         cut = t + 1
                         break
                 seqs.append(p[2] + g[:cut])
