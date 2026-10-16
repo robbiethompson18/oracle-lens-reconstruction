@@ -249,7 +249,8 @@ def main():
         with open(log_path, "a") as f:
             f.write(json.dumps(rec) + "\n")
         if step % rcfg["save_every"] == 0:
-            save_oracle(model, cfg["paths"]["ckpt_oracle_rl"])
+            # step-numbered so intermediate saves survive the final one (the pilot's step-25 save was overwritten)
+            save_oracle(model, os.path.join(cfg["paths"]["ckpt_oracle_rl"], f"step_{step:04d}"))
     save_oracle(model, cfg["paths"]["ckpt_oracle_rl"])
     log(f"[rl] final eval greedy FVE {evaluate(rcfg['eval_rows'] * 2):.4f}")
 

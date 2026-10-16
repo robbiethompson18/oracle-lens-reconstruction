@@ -231,3 +231,25 @@ ceselder's own runs were 8×H200 / 4–8×B200 nodes; we are trading her wall-cl
 3. Full run. Push every checkpoint to HF under Robbie's account.
 4. FVE match report vs her July table; qualitative Figure-64 panels; WorkspaceBench subset vs C.
 5. Write-up.
+
+
+## Pilot results (2026-10-15, 1×H100 SXM, ~7 GPU-h ≈ $28)
+
+Held-out greedy FVE, N=8, K=10, 256 eval rows (`runs/pilot/*/eval_n8_k10_t0.0.json`):
+
+| checkpoint | ours | ceselder July | gate |
+|---|---|---|---|
+| random phrases | 0.0011 | ~0.001 | ≈ 0 |
+| OMP teacher, 16 atoms, len-8 dict | 0.118 | ~0.19 | ≥ 0.17 ✗ |
+| oracle after SFT | 0.058 | ~0.11 | ≥ 0.10 ✗ |
+| oracle after RL (40 steps) | **0.236** | 0.21–0.22 | ≥ 0.20 ✓ |
+
+Reconstructor held-out cos 0.32; RL rollout FVE plateaued ~step 25 with KL to SFT ref ~1.3 nats/token
+(β=0.02 is too weak or lr 3e-5 too high for a longer run). Rollouts: 41 s/step with chunked HF
+generate (batch 32), so RL took 30 min. Two RL-stage bugs fixed: early-exit hook firing during the
+oracle's generate, and GDN recurrent-state OOM at 128 concurrent rollouts.
+
+Adapters (public): https://huggingface.co/collections/robbiethompson2018/nn-mats-sprint-oracle-lens-on-qwen36-27b-6ad1a5ec9f2f06b3b57a2cda
+
+Next for a full run: scale dictionary/reconstructor data 10× before scaling RL; step-numbered RL saves
+(done); a pod image with nvcc so fla/causal-conv1d kernels build; vLLM rollouts; then WorkspaceBench.
