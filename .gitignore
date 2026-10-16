@@ -31,3 +31,4 @@ runs/**/whitening/
 *.log
 runs/**/corpus/
 runs/**/teacher/
+runs/wildchat/
