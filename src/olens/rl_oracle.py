@@ -18,7 +18,6 @@ import numpy as np
 import torch
 
 from .common import (
-    EmbedInjector,
     Whitening,
     build_oracle_prompt,
     end_turn_id,
@@ -27,6 +26,7 @@ from .common import (
     load_model,
     log,
     logit_head,
+    make_injector,
     parse_generated_phrases,
     unwrap_peft,
     whiten_unit,
@@ -141,7 +141,7 @@ def main():
     model, recon = add_recon_adapter(model, cfg, trainable=False)
     model.set_adapter("oracle")
     lm_head = logit_head(model)
-    inj = EmbedInjector(model, cfg["oracle"]["inject_alpha"])
+    inj = make_injector(model, cfg)
     mean_t, W_t = Whitening.load(cfg["paths"]["whitening"]).to_torch(model.device)
     params = [p for n, p in model.named_parameters() if p.requires_grad and ".oracle." in n]
     log(f"[rl] trainable {sum(p.numel() for p in params) / 1e6:.1f}M params")

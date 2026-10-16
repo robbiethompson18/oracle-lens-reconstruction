@@ -220,8 +220,10 @@ class EmbedInjector:
     Fires only when the sequence still contains the marker (prefill); no-op on cached decode steps.
     """
 
-    def __init__(self, model, alpha):
+    def __init__(self, model, alpha, mean=None, W=None):
         self.alpha = alpha
+        self.mean = mean  # [d] or None: subtract before normalising ("centred" / "whitened" injection)
+        self.W = W  # [d, d] or None: whitening matrix applied after centring ("whitened" injection)
         self.positions = None
         self.vectors = None
         self._h = text_model(model).embed_tokens.register_forward_hook(self._hook)
@@ -238,6 +240,10 @@ class EmbedInjector:
         if self.positions is None or output.shape[1] <= int(self.positions.max()):
             return None
         v = self.vectors.to(output.device, torch.float32)
+        if self.mean is not None:
+            v = v - self.mean.to(output.device)
+        if self.W is not None:
+            v = v @ self.W.to(output.device)
         v = self.alpha * v / v.norm(dim=-1, keepdim=True).clamp_min(1e-6)
         out = output.clone()
         out[torch.arange(out.shape[0], device=out.device), self.positions.to(out.device)] = v.to(out.dtype)
@@ -245,6 +251,24 @@ class EmbedInjector:
 
     def remove(self):
         self._h.remove()
+
+
+def make_injector(model, cfg):
+    """EmbedInjector per cfg['oracle']['inject_space'] in {raw, centred, whitened}.
+
+    DECISION (inject space): WorkspaceBench found raw h beats centred/whitened on Qwen3.6, so raw is the
+    default. Gemma 4's L40 residual keeps 76% of its squared norm in one constant dimension (raw unit vectors
+    have mean pairwise cosine 0.80, centred ones ~0), so raw injection hands the oracle almost the same vector
+    for every activation; its pilot SFT/RL reached FVE 0.015/0.028. Centring uses the whitening-stage mean.
+    """
+    space = cfg["oracle"].get("inject_space", "raw")
+    if space == "raw":
+        return EmbedInjector(model, cfg["oracle"]["inject_alpha"])
+    wh = Whitening.load(cfg["paths"]["whitening"])
+    mean = torch.tensor(wh.mean)
+    W = torch.tensor(wh.W) if space == "whitened" else None
+    assert space in ("centred", "whitened"), space
+    return EmbedInjector(model, cfg["oracle"]["inject_alpha"], mean=mean, W=W)
 
 
 # ---------------------------------------------------------------- whitening

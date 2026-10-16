@@ -17,8 +17,8 @@ paths:
   ckpt_reconstructor: ckpt_recon
   dictionary: dictionary
   teacher: teacher
-  ckpt_oracle_sft: ckpt_oracle_sft
-  ckpt_oracle_rl: ckpt_oracle_rl
+  ckpt_oracle_sft: ckpt_oracle_sft_centred  # ckpt_oracle_sft / ckpt_oracle_rl hold the raw-injection run
+  ckpt_oracle_rl: ckpt_oracle_rl_centred
 
 corpus:
   prompt_dataset: HuggingFaceH4/ultrachat_200k
@@ -69,6 +69,7 @@ oracle:
   lora_r: 64
   lora_alpha: 16
   inject_alpha: 16000.0  # WorkspaceBench's embedding-replacement scale for Qwen3.6-27B
+  inject_space: centred  # raw gave FVE 0.015/0.028 (SFT/RL): one constant massive dim dominates Gemma's L40; see common.make_injector
   k_max: 16
   sft:
     epochs: 1            # 2 epochs = 4.6 h at 9 s/step on the H100 fallback kernels; 1 for the pilot

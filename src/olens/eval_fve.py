@@ -9,7 +9,7 @@ import random
 import numpy as np
 import torch
 
-from .common import Whitening, build_oracle_prompt, fve_of, load_config, load_model, log, read_jsonl, whiten_unit
+from .common import Whitening, build_oracle_prompt, fve_of, load_config, load_model, log, make_injector, read_jsonl, whiten_unit
 from .reconstructor import add_recon_adapter
 from .rl_oracle import rollout, score
 
@@ -28,13 +28,11 @@ def main():
 
     from peft import PeftModel
 
-    from .common import EmbedInjector as Inj
-
     model, tok = load_model(cfg["model"]["name"])
     model = PeftModel.from_pretrained(model, args.ckpt, adapter_name="oracle")
     model, recon = add_recon_adapter(model, cfg, trainable=False)
     model.eval()
-    inj = Inj(model, cfg["oracle"]["inject_alpha"])
+    inj = make_injector(model, cfg)
     mean_t, W_t = Whitening.load(cfg["paths"]["whitening"]).to_torch(model.device)
     acts = np.load(os.path.join(cfg["paths"]["acts"], "eval.npy"), mmap_mode="r")
     meta = list(read_jsonl(os.path.join(cfg["paths"]["acts"], "eval.meta.jsonl")))

@@ -9,13 +9,13 @@ import torch
 
 from .common import (
     EarlyExit,
-    EmbedInjector,
     ResidualTap,
     build_oracle_prompt,
     end_turn_id,
     load_config,
     load_model,
     log,
+    make_injector,
     marker_id,
     text_model,
 )
@@ -68,7 +68,7 @@ def main():
     log(f"early exit ok: {torch.allclose(hh[0].float(), h)} in {time.time() - t1:.2f}s")
     ex.remove()
 
-    inj = EmbedInjector(model, cfg["oracle"]["inject_alpha"])
+    inj = make_injector(model, {**cfg, "oracle": {**cfg["oracle"], "inject_space": "raw"}})  # whitening not fitted yet at smoke time
     pid = torch.tensor([ids], device=model.device)
     with torch.inference_mode():
         base = model(input_ids=pid, use_cache=False).logits[0, -1].float()
