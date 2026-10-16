@@ -20,6 +20,14 @@ instructions. Do not replace it with a separate file.
   `sky/ship.sh`. The local Mac never loads the model. `src/olens` is the pipeline; each stage is
   `python -m olens.<stage> --config configs/<name>.yaml`.
 
+## Weights
+
+- Publish adapters/checkpoints to Hugging Face early and often (every stage that finishes, every
+  intermediate RL save worth keeping), as **public** repos under the NN-MATS sprint collection
+  (https://huggingface.co/collections/robbiethompson2018/nn-mats-sprint-oracle-lens-on-qwen36-27b-6ad1a5ec9f2f06b3b57a2cda).
+  Robbie's private HF storage quota is full, so private uploads fail. Upload from the pod (fast
+  uplink), not from the laptop. Nothing here is sensitive; sharing with Kylie is the point.
+
 ## Docs
 
 Durable lessons about this repo go in git:
