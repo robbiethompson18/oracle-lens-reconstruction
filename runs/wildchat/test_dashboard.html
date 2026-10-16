@@ -1,0 +1,162 @@
+<title>Oracle Lens on WildChat</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: transcript list on the left, the reply as a clickable token strip in the middle, the lens readout per layer on the right. */
+:root {
+  --bg: #f6f7f5; --panel: #ffffff; --fg: #1b1f1d; --muted: #6a716d; --line: #d9ddd9;
+  --accent: #0f766e; --accent-soft: #d6efe9; --read: #e8ebe7; --future: #a7adaa;
+  --l36: #8ab4cf; --l44: #5a8fb5; --l52: #2f6a98; --l60: #1a4570;
+  --sans: "Instrument Sans", system-ui, sans-serif; --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #15181a; --panel: #1d2124; --fg: #e6e9e6; --muted: #929a95; --line: #333a3c;
+  --accent: #4fc3b5; --accent-soft: #1f3d39; --read: #2a3033; --future: #5c6461;
+  --l36: #6d9bbd; --l44: #7fb0d3; --l52: #a3c8e6; --l60: #cfe3f5; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #15181a; --panel: #1d2124; --fg: #e6e9e6; --muted: #929a95; --line: #333a3c;
+  --accent: #4fc3b5; --accent-soft: #1f3d39; --read: #2a3033; --future: #5c6461;
+  --l36: #6d9bbd; --l44: #7fb0d3; --l52: #a3c8e6; --l60: #cfe3f5; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 15px; line-height: 1.5;
+  padding-block: 20px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1 { font-size: 22px; font-weight: 600; margin: 0 0 4px; letter-spacing: -0.01em; }
+.sub { color: var(--muted); margin: 0 0 18px; max-width: 70ch; }
+.sub code, .how code { font-family: var(--mono); font-size: 13px; }
+.how { color: var(--muted); font-size: 14px; max-width: 80ch; margin: 0 0 18px; }
+.app { display: grid; grid-template-columns: 260px minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+@media (max-width: 1000px) { .app { grid-template-columns: 1fr; } }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; min-width: 0; }
+.list { max-height: 78vh; overflow-y: auto; }
+.item { padding: 9px 12px; border-bottom: 1px solid var(--line); cursor: pointer; font-size: 13.5px; color: var(--muted);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.item:hover { color: var(--fg); } .item.on { color: var(--fg); background: var(--accent-soft); font-weight: 500; }
+.item:focus-visible, .tok:focus-visible, .hl:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.lab { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 10px 12px 6px; }
+.prompt { padding: 0 14px 12px; white-space: pre-wrap; font-size: 14px; max-height: 24vh; overflow-y: auto; }
+.strip { padding: 4px 14px 14px; font-family: var(--mono); font-size: 13.5px; line-height: 1.9; white-space: pre-wrap; word-break: break-word; }
+.tok { border-radius: 3px; padding: 1px 0; }
+.tok.read { background: var(--read); cursor: pointer; border-bottom: 2px solid var(--line); }
+.tok.read:hover { border-bottom-color: var(--accent); }
+.tok.on { background: var(--accent); color: #fff; border-bottom-color: var(--accent); }
+.tok.future { color: var(--future); }
+.tok.start { display: inline-block; font-family: var(--sans); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; padding: 0 6px; margin-right: 6px; border: 1px dashed var(--line); line-height: 1.6; }
+.bar { display: flex; gap: 8px; align-items: center; padding: 10px 14px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.bar input[type=range] { flex: 1 1 160px; accent-color: var(--accent); }
+.bar button { font: inherit; font-size: 13px; background: none; border: 1px solid var(--line); color: var(--fg); border-radius: 6px; padding: 3px 9px; cursor: pointer; }
+.bar button:hover { border-color: var(--accent); }
+.pos { font-family: var(--mono); font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.layers { padding: 6px 14px 14px; display: grid; gap: 12px; }
+.layer { border-left: 3px solid var(--lc); padding-left: 12px; }
+.layer .lh { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.layer .lh b { color: var(--lc); font-weight: 600; }
+.layer ul { margin: 2px 0 0; padding-left: 18px; }
+.layer li { margin: 1px 0; }
+.layer .raw { white-space: pre-wrap; color: var(--muted); font-size: 13px; }
+.next { padding: 0 14px 14px; font-size: 13.5px; color: var(--muted); }
+.next span { font-family: var(--mono); color: var(--fg); font-size: 13px; }
+.hls { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; margin-bottom: 18px; }
+.hl { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; cursor: pointer; font-size: 13.5px; }
+.hl:hover { border-color: var(--accent); }
+.hl .t { font-weight: 600; margin-bottom: 2px; } .hl .n { color: var(--muted); }
+kbd { font-family: var(--mono); font-size: 12px; border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; }
+@media (prefers-reduced-motion: no-preference) { .tok { transition: background 120ms; } }
+</style>
+
+<h1>Oracle Lens on WildChat</h1>
+<p class="sub">Qwen3.6-27B answers a WildChat prompt. At every 4th token of its reply, an oracle lens reads the residual stream at four depths and writes what the model is "thinking" as bullets. Click a highlighted token, or scrub with the slider / <kbd>←</kbd> <kbd>→</kbd>.</p>
+<p class="how">Lens: the WorkspaceBench authors' public checkpoint (<code>agu18dec/olens_and_ar</code>, RL step 600), not ours yet. The read at a token is the residual after the model has consumed that token, i.e. while it decides the next one. Greyed text to the right of the selected token is what the model went on to write; the lens never sees it. Sampled once at T=1, so readouts are noisy by design.</p>
+
+<div class="lab" style="padding-left:0">Highlights</div>
+<div class="hls" id="hls"></div>
+
+<div class="app">
+  <div class="panel">
+    <div class="lab">Prompts (<span id="n"></span>)</div>
+    <div class="list" id="list" role="listbox"></div>
+  </div>
+  <div class="panel">
+    <div class="lab">User prompt</div>
+    <div class="prompt" id="prompt"></div>
+    <div class="lab">Model reply (click a token)</div>
+    <div class="strip" id="strip"></div>
+    <div class="bar">
+      <button id="prev" type="button">←</button>
+      <input type="range" id="scrub" min="0" max="0" value="0" aria-label="read position">
+      <button id="next" type="button">→</button>
+      <span class="pos" id="pos"></span>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="lab">Lens readout at this token</div>
+    <div class="layers" id="layers"></div>
+    <div class="lab">What the model actually wrote next</div>
+    <div class="next" id="nextText"></div>
+  </div>
+</div>
+
+<script id="data" type="application/json">{"transcripts": [{"id": "b8c094e8f443e46119612cc8f248352f", "prompt": "i have two arrows up and down ,i want to make them scroll up and down to scroll between images", "response_tokens": ["Here", " is", " a", " complete", ",", " working", " example", " of", " how", " to", " create", " an", " image", " slider", " using", " Up", " and", " Down", " arrows", ".", "\n\n", "I", " have", " combined", " HTML", ",", " CSS", ",", " and", " JavaScript", " into", " one", " block", " so", " you", " can", " copy", ",", " paste", ",", " and", " run", " it", " immediately", " to", " test", " it", " out", ".", "\n\n", "###", " The", " Code", "\n\n", "```", "html", "\n", "<!", "DOCTYPE", " html"], "layers": [36, 44, 52, 60], "positions": [-1, 0, 30], "readouts": [["- Here are a few ways to make arrow buttons control a page of images. The best method\n- Here are a few ways to make your arrows control a set of images, depending on whether you want\n- Here are a few ways to make arrows control images using JavaScript. The best method depends on whether you want a **physical photo viewer\n- This is a classic web development task! You need to listen for the arrow keys and change the `src` (source) of the image dynamically.", "- To make images slide based on pressing buttons, you need a combination of\n- Here are three ways to achieve this, ranging from simple vanilla JavaScript to using a\n- Here is how to make a \"click-to-select\" image carousel using HTML, CSS, and JavaScript. I will show you how\n- Here is a complete, working example using **HTML, CSS, and JavaScript**. This setup allows you to click a name and scroll to", "- Here is a complete solution to make a set of images work like buttons to navigate. This\n- To achieve this, you need to use JavaScript to detect which image is selected and scroll or change the view. Here are the three\n- Here are three ways to implement this using **HTML, CSS, and JavaScript**. The most common method is creating a \"Carousel\"\n- Here are a few ways to implement this, ranging from a simple JavaScript gallery to a more advanced swipe gallery.\n\n### Method 1:", "- Here is a complete solution to scroll images with mouse movement. This is a classic feature often found\n- Here are a few ways to achieve this using HTML, CSS, and JavaScript. Since you didn't specify which image gallery you\n- Here are a few ways to create this functionality using HTML, CSS, and JavaScript. The most common way to scroll an image when clicking on dots is\n- Here are two complete ways to create an image slider using HTML and JavaScript.\n\n### Method 1: Simple HTML"], ["- are three ways to make this happen, ranging from simple to advanced. Since you are\n- 3 ways to connect buttons to images in HTML. I will explain them from\n- - 3 distinct ways to do this, ranging from simple to professional. You will need to add JavaScript to make the\n- are a few ways to do this, ranging from simple HTML to a more complex JavaScript approach. I will show you", "- are three common ways to do this. I will show you the\n- 3 different examples, from simple to advanced. The most common method uses **HTML + JavaScript**. This\n- ’s the step-by-step code for each. I will use a standard `<div>` structure, as this is how most keyboard layouts work.\n- : three different ways to do this, ranging from the easiest (using an HTML Library) to a custom Script.\n\n### Option 1", "- is a complete code example using **three different methods**, ranging from simple\n- 3 ways to do this using HTML and JavaScript. I will provide the most common and beginner-friendly\n- 's a complete solution using the most standard method (HTML5 Canvas). You can choose the one that fits your needs best.\n- are two ways to do this depending on your experience level. I will provide the **modern JavaScript approach** (easi", "- are three different ways to achieve this, ranging from simple (using HTML\n- is a complete, working example using **HTML, CSS, and JavaScript**. This is the most standard way\n- are three complete examples depending on your preferred method. The **Canvas Method** is the most common and flexible approach.\n\n###\n- is a complete, working solution using **HTML, CSS, and JavaScript**. This is the most common method."], ["- 一个 file for you to easily test. I have explained each part below.\n- 三个 parts (HTML, CSS, and JS) to make it easy to test. You can copy this into\n- 一块 (HTML, CSS, and JS) for easy reading. You can save this as an `.html` file to test it immediately.\n- a single block of code to make it easy for you to test.\n\n### The Solution\n\nThis code creates a", "- 一个 single file for easy testing, but I will explain each part separately.\n- 一个 file for easy testing. You can copy and paste this code into an `.html`\n- 一个 single file for easy testing, but I will explain the CSS parts separately. You can separate them later.\n\n### The Code Structure\n- 一起 (combined into one HTML file) for you to copy and test immediately. I have included comments explaining how each part works.", "- one block for ease of use. You can separate them into files later.\n- 一个 single block of code for you to copy and paste. You can see how the HTML, CSS,\n- 一个 file for ease of testing. I have added comments to explain what each part does.\n\n```html\n<!DOCTYPE\n- 一个 single structure for easier testing. You can separate them into HTML, CSS, and JS files if you prefer.\n\n```html", "- one solution below to make it easy to copy. You can also split these into separate files if\n- 一个 clear structure so you can copy and paste it. The three components are HTML, CSS,\n- 一个 single block of code to make it easy to test. We will use standard HTML, CSS, and a small bit of JavaScript.\n- 一个 single file structure for ease of use, but you can separate them into `index.html`, `style.css`, and `"]]}, {"id": "2fd507346bad5c4dc8e9884c3087b508", "prompt": "Paraphrase (From below email, it is found that 2023 report to government is not yet ready. \nAttached herewith the 2022 annual report, in case it can be used for your purpose.)", "response_tokens": ["Here", " are", " a", " few", " ways", " to", " paraph", "rase", " the", " message", ",", " depending", " on", " the", " level", " of", " form", "ality", " you", " need", ":", "\n\n", "**", "Option", " ", "1", ":", " Professional", " &", " Clear", " (", "Recommended", ")**", "\n", ">", " \"", "Please", " note", " that", " the", " ", "2", "0", "2", "3", " government", " report", " is", " not", " yet", " ready", ".", " In", " the", " meantime", ",", " I", " have", " attached", " the"], "layers": [36, 44, 52, 60], "positions": [-1, 0, 30], "readouts": [["- Here are a few ways to paraphrase the email, depending on the desired tone:\n- Here are a few ways to rephrase the email, maintaining the core message that the attached documents have been\n- 这里提供几种不同语气和侧重点的改写版本，你可以根据具体情况选择最合适的。原邮件的核心信息是：附上了供参考的NOC（No Objection Certificate\n- Here are a few ways to paraphrase the email, depending on the desired level of formality and conciseness. The core message is that the attached file has been", "- Here are a few ways to paraphrase the email note, ranging from formal to\n- Here are a few ways to paraphrase the provided email excerpt, depending on the desired level of formality:\n- Here are a few ways to rephrase that email, ranging from professional to concise, while correcting the grammatical errors and clarifying\n- Here are a few ways to rephrase the sentence for an email, ranging from formal to concise, while correcting the grammatical", "- Here are a few ways to paraphrase the email extract, depending on the desired level of formality\n- Here are a few ways to paraphrase the email, ranging from formal to concise, while correcting the grammatical errors\n- 根据您提供的邮件内容，以下是几种不同风格的 paraphrase（改写）版本，您可以根据语境选择最合适的一个：\n- Here are a few ways to paraphrase the email note, ranging from formal to concise, depending on your needs:\n\n**Option 1:", "- Based on the email provided, here are a few ways to rewrite the sentences in\n- Here are a few paraphrased options for the email body, maintaining the formal tone while correcting the grammar and improving the\n- Here are a few paraphrased options for the email excerpt, ranging from formal to concise, while correcting the grammar and flow:\n- Based on the email received, we can observe that the original email included an attached document titled \"draft for your reference.\" Below are several professional paraphrases"], ["- are a few rewritten versions of the text, categorized by tone. The original note is quite informal and\n- are a few ways to paraphrase the memo note, depending on the desired level of formality\n- 's a few ways to paraphrase this memo note, categorized by tone and formality. Since the original text contains several grammatical errors and a\n- are a few professional rephrasings of the note, categorized by tone. I have corrected the grammatical errors and improved the flow while keeping", "- are several ways to rephrase the sentence for a professional email, depending on the tone you\n- are a few professional ways to rewrite this note, categorized by tone:\n- 's a few professional ways to rewrite that sentence, depending on the desired level of formality and urgency. The original text contains a few\n- are a few professional ways to rephrase this sentence, categorized by tone:\n\n**Professional & Direct (Recommended for Email)**", "- are a few ways to paraphrase the email, depending on the level of formality you\n- are a few ways to paraphrase the email, ranging from professional to concise, while correcting the grammatical errors and improving the flow\n- 's a few options for paraphrasing the email, ranging from professional to slightly more formal. You can choose the one that\n- are a few ways to paraphrase this email response, depending on the desired tone.\n\n**", "- are a few ways to paraphrase the sentence, depending on the tone\n- are a few ways to rewrite this message, depending on the desired level of formality and clarity\n- 're a few polished and professional versions of your sentence, categorized by tone, to ensure clarity and grammatical correctness for an email or formal request:\n\n###\n- are a few ways to rephrase the email, depending on the desired level of formality and"], ["- Best for standard business emails)\n- Recommended for most workplace communications) \"Please note that the estimated expenses have been reduced compared to\n- Best for most business contexts) This version is clear, polite, and maintains a professional tone while being concise.\n- Recommended for most internal emails) This version is clear, professional, and easy to understand. It removes the redundant phrasing while maintaining a polite tone.\n\n> Please note:", "- Best for most business emails)\n- Recommended for standard business communication) This version flows smoothly and uses standard business terminology.\n- Suitable for most workplace communications) This version improves flow and clarity while maintaining a polite tone.\n- Best for general use) This version corrects the grammar and uses standard business terminology while remaining polite.\n\n> \"Please note that", "- Recommended for most situations)\n- Best for standard business communication) This version corrects the grammar and improves the flow while keeping the\n- Standard Professional) This version maintains the original meaning but improves the flow and grammar, making it suitable for most business emails.\n- Recommended for most business contexts) This option fixes the grammar errors and flows smoothly while maintaining a polite tone.", "- Recommended for most business contexts)**\n- Recommended for most business emails)** This version smooths out the grammar while\n- Standard Business)** This version improves the flow and grammar while maintaining a polite and professional tone. It removes the redundancy of\n- Recommended) This version is professional and clear, suitable for most business contexts. It fixes the grammar and improves the flow while keeping the tone courteous."]]}], "highlights": []}</script>
+<script>
+const D = JSON.parse(document.getElementById('data').textContent);
+const T = D.transcripts, H = D.highlights || [];
+const LC = {36: 'var(--l36)', 44: 'var(--l44)', 52: 'var(--l52)', 60: 'var(--l60)'};
+let ti = 0, pi = 0;
+const $ = id => document.getElementById(id);
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+function renderList() {
+  $('n').textContent = T.length;
+  $('list').innerHTML = T.map((t, i) => `<div class="item${i===ti?' on':''}" role="option" tabindex="0" data-i="${i}">${esc(t.prompt)}</div>`).join('');
+  $('list').querySelectorAll('.item').forEach(el => {
+    el.onclick = () => select(+el.dataset.i, 0);
+    el.onkeydown = e => { if (e.key === 'Enter') select(+el.dataset.i, 0); };
+  });
+}
+function renderHighlights() {
+  $('hls').innerHTML = H.map((h, i) => `<div class="hl" tabindex="0" data-i="${i}"><div class="t">${esc(h.title)}</div><div class="n">${esc(h.note)}</div></div>`).join('');
+  $('hls').querySelectorAll('.hl').forEach(el => {
+    const go = () => { const h = H[+el.dataset.i]; const t = T.findIndex(x => x.id === h.id); if (t < 0) return;
+      select(t, T[t].positions.indexOf(h.pos)); $('strip').scrollIntoView({block: 'nearest'}); };
+    el.onclick = go; el.onkeydown = e => { if (e.key === 'Enter') go(); };
+  });
+}
+function select(t, p) {
+  ti = t; pi = Math.max(0, p);
+  const tr = T[ti];
+  $('list').querySelectorAll('.item').forEach((el, i) => el.classList.toggle('on', i === ti));
+  $('prompt').textContent = tr.prompt;
+  $('scrub').max = tr.positions.length - 1; $('scrub').value = pi;
+  renderStrip(); renderReadout();
+}
+function renderStrip() {
+  const tr = T[ti], readAt = new Map(tr.positions.map((p, i) => [p, i])), cur = tr.positions[pi];
+  let html = `<span class="tok start${readAt.has(-1)?' read':''}${cur===-1?' on':''}" data-p="0" tabindex="0">reply starts</span>`;
+  tr.response_tokens.forEach((tok, j) => {
+    const r = readAt.has(j), cls = ['tok', r ? 'read' : '', j === cur ? 'on' : '', j > cur ? 'future' : ''].join(' ');
+    html += `<span class="${cls}"${r ? ` data-p="${readAt.get(j)}" tabindex="0"` : ''}>${esc(tok)}</span>`;
+  });
+  $('strip').innerHTML = html;
+  $('strip').querySelectorAll('.tok.read').forEach(el => {
+    el.onclick = () => { pi = +el.dataset.p; $('scrub').value = pi; renderStrip(); renderReadout(); };
+    el.onkeydown = e => { if (e.key === 'Enter') el.onclick(); };
+  });
+}
+function bullets(s) {
+  const lines = s.split('\n').map(x => x.trim()).filter(Boolean);
+  if (lines.every(x => x.startsWith('- '))) return `<ul>${lines.map(x => `<li>${esc(x.slice(2))}</li>`).join('')}</ul>`;
+  return `<div class="raw">${esc(s)}</div>`;
+}
+function renderReadout() {
+  const tr = T[ti], cur = tr.positions[pi], outs = tr.readouts[pi];
+  $('pos').textContent = cur === -1 ? 'before token 1' : `token ${cur + 1} / ${tr.response_tokens.length}`;
+  $('layers').innerHTML = tr.layers.map((L, k) => `<div class="layer" style="--lc:${LC[L] || 'var(--accent)'}"><div class="lh"><b>L${L}</b> · block ${L} of 64 (${Math.round(100 * (L + 1) / 64)}% depth)</div>${bullets(outs[k])}</div>`).join('');
+  const nxt = tr.response_tokens.slice(cur + 1, cur + 25).join('');
+  $('nextText').innerHTML = nxt ? `<span>${esc(nxt)}</span>${cur + 25 < tr.response_tokens.length ? '…' : ''}` : '(end of the generated window)';
+}
+function step(d) { const n = T[ti].positions.length; pi = Math.min(n - 1, Math.max(0, pi + d)); $('scrub').value = pi; renderStrip(); renderReadout(); }
+$('scrub').oninput = e => { pi = +e.target.value; renderStrip(); renderReadout(); };
+$('prev').onclick = () => step(-1); $('next').onclick = () => step(1);
+document.addEventListener('keydown', e => { if (e.target.tagName === 'INPUT') return; if (e.key === 'ArrowLeft') step(-1); if (e.key === 'ArrowRight') step(1); });
+renderList(); renderHighlights(); select(0, 0);
+</script>

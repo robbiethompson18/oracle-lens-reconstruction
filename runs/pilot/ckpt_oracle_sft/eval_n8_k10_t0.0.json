@@ -1,0 +1,1099 @@
+{
+ "ckpt": "/work/pilot/ckpt_oracle_sft",
+ "n": 8,
+ "k": 10,
+ "rows": 256,
+ "temperature": 0.0,
+ "fve": 0.05842380132526159,
+ "fve_random": 0.0011387420818209648,
+ "examples": [
+  {
+   "row": 0,
+   "fve": 0.10803556442260742,
+   "phrases": [
+    " for your extraordinary dedication, hard work,",
+    " for the detailed proposal regarding [Product/",
+    ", but for your head. When you",
+    " for the detailed proposal regarding [Product/",
+    ", and I can help you structure it",
+    " for the detailed proposal regarding [Product/",
+    ", you step out of mediocrity",
+    " the team can submit requests to acc.a",
+    ", and I can help you structure it",
+    " to the volunteers who knocked on doors rain"
+   ],
+   "actual_next": " for your incredible work on [Project Name]\n\nHi [Coworker's Name],\n\nI hope you\u2019re having a wonderful week.\n\nI wanted to"
+  },
+  {
+   "row": 1,
+   "fve": 0.023544669151306152,
+   "phrases": [
+    " deadline for submitting your name to the school",
+    " a difficult financial position, stating that her",
+    " the pressure on natural resources has reached a",
+    " a project under constant construction. Like many",
+    " the team can submit requests to acc.a",
+    ", deadlines). Color-code by category (",
+    " the difficult economic and social challenges facing rural",
+    " a tight budget, here are some tips",
+    " the team can submit requests to acc.a",
+    " the end of the provided material."
+   ],
+   "actual_next": " wonderful week.\n\nI wanted to take a moment to sincerely thank you for your diligence and dedication to the [Project Name] project. As we cross the finish"
+  },
+  {
+   "row": 2,
+   "fve": 0.5071901082992554,
+   "phrases": [
+    " wanted to walk you through why I believe",
+    " am writing to request a face-to-face",
+    " I wanted to take a moment to tell",
+    "\u2019m writing to invite you to our upcoming",
+    ", I wanted to take a moment to",
+    "\u2019ve heard your feedback loud and clear\u2014you",
+    " am no longer safe. If I stay",
+    "\u2019m meeting expectations. Can we align on",
+    ", I wanted to take a moment to",
+    " to highlight three areas where this shortfall is"
+   ],
+   "actual_next": " wanted to take a moment to sincerely thank you for your diligence and dedication to the [Project Name] project. As we cross the finish line, I\u2019ve been"
+  },
+  {
+   "row": 3,
+   "fve": 0.17407166957855225,
+   "phrases": [
+    " [Product Name/Model]. Specifically,",
+    " project. This approach allows you to present",
+    "] class on [Date]. I was",
+    " project, from conception to long-term maintenance",
+    "] will happen, leading to [Out",
+    "] [1] [2] [",
+    "] [6] [7] [",
+    " project, from conception to long-term maintenance",
+    "] [1] [2] [",
+    "] [1] [2] ["
+   ],
+   "actual_next": "] project. As we cross the finish line, I\u2019ve been reflecting on how pivotal your contribution was to our success, and I couldn\u2019t let the moment pass"
+  },
+  {
+   "row": 4,
+   "fve": 0.06807059049606323,
+   "phrases": [
+    ", I wanted to take a moment to",
+    ", I\u2019ve embraced the power of the",
+    ", I need to know **which band",
+    ", I can confidently attest to its value",
+    ", the night ten years ago when Elias",
+    ", I\u2019ve embraced the power of the",
+    ", the night ten years ago when Elias",
+    ", I can confidently attest to its value",
+    ", the night ten years ago when Elias",
+    ", I will provide a **comprehensive"
+   ],
+   "actual_next": ", I\u2019ve been reflecting on how pivotal your contribution was to our success, and I couldn\u2019t let the moment pass without expressing my gratitude.\n\nI was particularly"
+  },
+  {
+   "row": 5,
+   "fve": 0.06822282075881958,
+   "phrases": [
+    " the importance of digestive fire (*Agni",
+    " your support has directly contributed to [brief",
+    " the most influential bands in history. This",
+    " role in the diagnosis, treatment, and",
+    " the team can submit requests to acc.a",
+    " you are. Where are you located?\"",
+    " the most enduring happiness is not found in",
+    " the conquests (post-12",
+    " the team can submit requests to acc.a",
+    " the most difficult sectors to decarbonize"
+   ],
+   "actual_next": " your contribution was to our success, and I couldn\u2019t let the moment pass without expressing my gratitude.\n\nI was particularly impressed by your attention to detail during the"
+  },
+  {
+   "row": 6,
+   "fve": 0.34908169507980347,
+   "phrases": [
+    " wanted to walk you through why I believe",
+    " I wanted to take a moment to tell",
+    " am only worthy if I am thin\")",
+    " I wanted to take a moment to tell",
+    "\u2019m writing to invite you to our upcoming",
+    " am no longer safe. If I stay",
+    " I wanted to take a moment to tell",
+    ", I\u2019ve embraced the power of the",
+    " am the awareness, then I cannot die",
+    " to highlight three areas where this shortfall is"
+   ],
+   "actual_next": " couldn\u2019t let the moment pass without expressing my gratitude.\n\nI was particularly impressed by your attention to detail during the [specific phase, e.g., final review"
+  },
+  {
+   "row": 7,
+   "fve": 0.07912909984588623,
+   "phrases": [
+    " particularly valuable. [Optional: Insert specific",
+    " by the fact that these diseases differ from",
+    " I was truly grateful for the thoroughness",
+    " particularly for conditions like rare diseases or treatments",
+    " by the fact that these diseases differ from",
+    " I am here to tell you that this",
+    ", I\u2019ve embraced the power of the",
+    " by the fact that these diseases differ from",
+    " particularly regarding logistical hurdles and the socioeconomic impact",
+    ", I\u2019ve embraced the power of the"
+   ],
+   "actual_next": " particularly impressed by your attention to detail during the [specific phase, e.g., final review/data analysis] stage. Noticing those inconsistencies and taking the extra time"
+  },
+  {
+   "row": 8,
+   "fve": 0.02119547128677368,
+   "phrases": [
+    " attention to detail, quality of materials,",
+    " ability to voice concerns without fear of re",
+    " work that didn\u2019t exist. He would",
+    " your cheerleaders, and your sanctuary.",
+    " ability to voice concerns without fear of re",
+    ", and relentless pursuit of the American Dream",
+    " the team can submit requests to acc.a",
+    " **Efficiency**: To make life easier",
+    " the meticulous preparation of the dough, the",
+    " **Deeply Rooted Local Presence:**"
+   ],
+   "actual_next": " attention to detail during the [specific phase, e.g., final review/data analysis] stage. Noticing those inconsistencies and taking the extra time to refine the deliver"
+  },
+  {
+   "row": 9,
+   "fve": 0.02117013931274414,
+   "phrases": [
+    " and the meticulous crafting of the novel\u2019s",
+    ", and the predictability of cause and",
+    ", and the persistent, nagging voice",
+    " in the identification of major depressive disorder compared",
+    ", and I can help you structure it",
+    ", and the predictable laws of physics.",
+    ", and the quiet, insidious voice",
+    ", and I can help you structure it",
+    " in the preparation of the kale and the",
+    ", and the predictable laws of physics."
+   ],
+   "actual_next": " during the [specific phase, e.g., final review/data analysis] stage. Noticing those inconsistencies and taking the extra time to refine the deliverables made a"
+  },
+  {
+   "row": 10,
+   "fve": 0.0800333023071289,
+   "phrases": [
+    " specific examples of research methods** (such",
+    " area. GBP ensures you appear to people",
+    " specific examples of research methods** (such",
+    ", e.g., cloud-based platform]",
+    " specific region, as Greece has a rich",
+    ", e.g., most user-friendly solution",
+    " the specific lure online, you are encouraged",
+    " areas where smartphones are rare but basic feature",
+    ", e.g., cloud-based platform]",
+    " a specific area, affect **multiple sites"
+   ],
+   "actual_next": " phase, e.g., final review/data analysis] stage. Noticing those inconsistencies and taking the extra time to refine the deliverables made a significant difference in the"
+  },
+  {
+   "row": 11,
+   "fve": 0.018285095691680908,
+   "phrases": [
+    "] class on [Date]. I was",
+    ", or system before granting access to resources",
+    "] [6] [7] [",
+    ", and I can help you structure it",
+    "] [6] [7] [",
+    ", and the predictable laws of physics.",
+    ", and social dimensions of RNG utilization.",
+    "] [6] [7] [",
+    ", and the predictable laws of physics.",
+    ", and I can help you structure it"
+   ],
+   "actual_next": "] stage. Noticing those inconsistencies and taking the extra time to refine the deliverables made a significant difference in the final quality. Your commitment to excellence didn\u2019t"
+  },
+  {
+   "row": 12,
+   "fve": 0.0030469894409179688,
+   "phrases": [
+    " only through the sporadic, terse letters",
+    ", but also those with fresh perspectives.",
+    " only by the faint, irregular ticking of",
+    " only post about once a week,\" explaining",
+    ", but also those with fresh perspectives.",
+    " only through the sporadic, terse letters",
+    ", but to his left eye, a",
+    " only for dry farming of olives,",
+    " only the highest-quality items just for you",
+    ", but to his left eye, a"
+   ],
+   "actual_next": "icing those inconsistencies and taking the extra time to refine the deliverables made a significant difference in the final quality. Your commitment to excellence didn\u2019t just elevate our output"
+  },
+  {
+   "row": 13,
+   "fve": 0.10961729288101196,
+   "phrases": [
+    " I appreciate you being direct, Elena.",
+    ". I remember my first time in C",
+    " This lack of interest directly influences their social",
+    ", and I can help you structure it",
+    ". I remember my first time in C",
+    " your dedication to [mention a specific goal",
+    ", and the predictable laws of physics.",
+    " It was soulless. I felt like",
+    ", and I can help you structure it",
+    ". I was truly sorry to learn that"
+   ],
+   "actual_next": " Your commitment to excellence didn\u2019t just elevate our output; it set a wonderful standard for the entire team and gave us all the confidence to present our work to ["
+  },
+  {
+   "row": 14,
+   "fve": 0.014916300773620605,
+   "phrases": [
+    " has helped position Austin as a hub for",
+    ", and I can help you structure it",
+    " was a profound cultural, artistic, political",
+    ", and I can help you structure it",
+    ", and the predictable laws of physics.",
+    " is a common nickname for Benjamin, and",
+    ", and the predictable laws of physics.",
+    " to inspire effective poetry lessons, using specific",
+    ", and I can help you structure it",
+    ", and the sterile hum of servers."
+   ],
+   "actual_next": " created a collaborative spirit that truly lifted everyone up. It\u2019s a privilege to work alongside someone who combines such professional skill with genuine care for the team\u2019s goals."
+  },
+  {
+   "row": 15,
+   "fve": 0.07160961627960205,
+   "phrases": [
+    " that permeated the camp. It was",
+    " that keeps both alive and relevant. Here",
+    " that can introduce the characters to a new",
+    " and a sense of calm, making it",
+    " that can introduce the characters to a new",
+    " that supports the entire structure. This allows",
+    ", and I can help you structure it",
+    " that shattered my confidence. I had applied",
+    " that can introduce the characters to a new",
+    ", and a greater sense of calm and"
+   ],
+   "actual_next": " that truly lifted everyone up. It\u2019s a privilege to work alongside someone who combines such professional skill with genuine care for the team\u2019s goals.\n\nTo show my"
+  },
+  {
+   "row": 16,
+   "fve": 0.23858046531677246,
+   "phrases": [
+    " is a profound honor to receive your letter",
+    " I felt lost, impulsive, or",
+    "\u2019s great to know I won\u2019t be",
+    " is important to clarify a common misconception upfront",
+    " to be a mentor, friend, and",
+    "\u2019s great:* Public speaking is often about",
+    " is a transformative way to add depth,",
+    " to know the borrower personally, consider character",
+    "\u2019s a video of a Hainan",
+    " is a common nickname for Benjamin, and"
+   ],
+   "actual_next": "\u2019s a privilege to work alongside someone who combines such professional skill with genuine care for the team\u2019s goals.\n\nTo show my appreciation, I\u2019d love to treat"
+  },
+  {
+   "row": 17,
+   "fve": 0.06057929992675781,
+   "phrases": [
+    " you. You haven\u2019t just been a",
+    " a company** that provides this advice.",
+    " such grace during that difficult family situation].",
+    " a person believes, God imputes",
+    " you. You haven\u2019t just been a",
+    " a team of experts with a passion for",
+    " the team.\"] Having you there will not",
+    " a mentor: \"Don\u2019t talk to",
+    " a person believes, God imputes",
+    " the most enduring happiness is not found in"
+   ],
+   "actual_next": " someone who combines such professional skill with genuine care for the team\u2019s goals.\n\nTo show my appreciation, I\u2019d love to treat you to lunch or coffee next"
+  },
+  {
+   "row": 18,
+   "fve": 0.010069191455841064,
+   "phrases": [
+    " and a sense of calm, making it",
+    ", but with **all key parties**",
+    " and skill, not just physical endurance.",
+    " with the **Crochet Guild of America",
+    ", but with **all key parties**",
+    " and the **Functional Code** (HTML",
+    ", but with **all key parties**",
+    " and the arrival of spring, representing renewal",
+    ", but with **all key parties**",
+    " and the **Functional Code** (HTML"
+   ],
+   "actual_next": " with genuine care for the team\u2019s goals.\n\nTo show my appreciation, I\u2019d love to treat you to lunch or coffee next week. Let me know what"
+  },
+  {
+   "row": 19,
+   "fve": 0.06395936012268066,
+   "phrases": [
+    " honor of Officer Rittner, and",
+    " to make the dish spicier, just",
+    ", I wanted to take a moment to",
+    " to celebrate the book\u2019s themes of travel",
+    " to demonstrate that heritage is not a burden",
+    ", I would highly recommend Codesmith and",
+    " to the volunteers who knocked on doors rain",
+    " a replacement for the injured Brogdon",
+    " to the volunteers who knocked on doors rain",
+    " to clear his head, specifically to escape"
+   ],
+   "actual_next": " show my appreciation, I\u2019d love to treat you to lunch or coffee next week. Let me know what day works best for you\u2014I think we could both use"
+  },
+  {
+   "row": 20,
+   "fve": 0.018663763999938965,
+   "phrases": [
+    " coffee. Leo (16, younger",
+    " to walk it off, stubbornness overriding",
+    " a meal plan for someone undergoing chemotherapy requires",
+    " **Buyer-Seller Meeting:** Fac",
+    " to pay only for what they use.",
+    " a walk, ask them to notice five",
+    " to the volunteers who knocked on doors rain",
+    ", I would highly recommend Codesmith and",
+    " **Hugs and Touch:** The text",
+    " to the kitchen to refill my water."
+   ],
+   "actual_next": " treat you to lunch or coffee next week. Let me know what day works best for you\u2014I think we could both use a chance to relax and celebrate a job"
+  },
+  {
+   "row": 21,
+   "fve": 0.035561978816986084,
+   "phrases": [
+    " you with a **complete, timed script",
+    " you to use reputable search engines and platforms",
+    " a meal plan for someone undergoing chemotherapy requires",
+    " you today with a heart full of gratitude",
+    " a walk, ask them to notice five",
+    " you the *meta-skills* of",
+    " the team can submit requests to acc.a",
+    " you to filter by specialty, insurance,",
+    " me knight and accidentally hit me with a",
+    " a meal plan for someone undergoing chemotherapy requires"
+   ],
+   "actual_next": " you to lunch or coffee next week. Let me know what day works best for you\u2014I think we could both use a chance to relax and celebrate a job well"
+  },
+  {
+   "row": 22,
+   "fve": 0.08129751682281494,
+   "phrases": [
+    "Thank you for taking the time to share",
+    " I am here to tell you that this",
+    ". I still see the same incredible empathy",
+    " I wanted to take a moment to tell",
+    ", and I can help you structure it",
+    " **End Date:** Next Sunday (7",
+    ", but to his left eye, a",
+    " the team can submit requests to acc.a",
+    ", and I can help you structure it",
+    " **100% cotton blends**"
+   ],
+   "actual_next": "Thanks again for everything you do.\n\nWarmly,\n\n[Your Name]<|im_end|>"
+  },
+  {
+   "row": 23,
+   "fve": 0.05229979753494263,
+   "phrases": [
+    " [Your Name], and I am a",
+    ", phone number, and social media links",
+    "] [1] [2] [",
+    ", and I can help you structure it",
+    " **Location:** Undersea, east of",
+    ", and I can help you structure it",
+    " **XYZ Organization** may refer to a",
+    ", and the predictable laws of physics.",
+    " **B2B**: Involves",
+    ", and the predictable laws of physics."
+   ],
+   "actual_next": "]<|im_end|>"
+  },
+  {
+   "row": 24,
+   "fve": 0.13795554637908936,
+   "phrases": [
+    " page in the hope that Jane Denver will",
+    " **Clear Call-to-Action (CT",
+    ", you need to understand *why*",
+    " landing page, structured around your specified requirements",
+    " is a common nickname for Benjamin, and",
+    ", and the text itself does not provide",
+    " **B2B**: Involves",
+    " a single event, but as a holistic",
+    ", and the text itself does not provide",
+    " **Keyword Matching:** Highlight the 3"
+   ],
+   "actual_next": " page must be concise, benefit-driven, and highly relevant to the traffic source.\n\n*   **Headline First:** Your headline should clearly state the **primary"
+  },
+  {
+   "row": 25,
+   "fve": 0.026002168655395508,
+   "phrases": [
+    " compelling product pitch tailored to a specific customer",
+    " **Headline:** **Is Your Head",
+    " be a pristine utopia: sun-d",
+    " **What to Expect:** This is not",
+    " be a pristine utopia: sun-d",
+    " **Clear Everything Off:** Remove every item",
+    ", and the headline alone is not enough",
+    " to the specific urban constraints of 1",
+    " **What to Expect:** This is not",
+    " the core message emphasizes the lasting and invaluable"
+   ],
+   "actual_next": " clearly state the **primary benefit** of your offer within 3\u20135 seconds of landing. Avoid cleverness; prioritize clarity.\n    *   *Bad"
+  },
+  {
+   "row": 26,
+   "fve": 0.017430543899536133,
+   "phrases": [
+    " value for anyone looking to change careers or",
+    ", actionable, and sustainable healthy eating experience",
+    " the core message emphasizes the lasting and invaluable",
+    ", and clear value proposition. It is",
+    " **What to Expect:** This is not",
+    " the product or service you are promoting.",
+    ", and the predictable laws of physics.",
+    " the core concepts correctly before proceeding further.",
+    ", and the predicted outcome based on historical",
+    " **What to Expect:** This is not"
+   ],
+   "actual_next": " state the **primary benefit** of your offer within 3\u20135 seconds of landing. Avoid cleverness; prioritize clarity.\n    *   *Bad:*"
+  },
+  {
+   "row": 27,
+   "fve": 0.007203042507171631,
+   "phrases": [
+    " the page in question. There is no",
+    " the time of the report, most of",
+    " the user. I\u2019ll build an interactive",
+    " the first time, she looked at him",
+    " the browser, you can press **F",
+    " the eye see its own destruction? It",
+    " the time of the report, most of",
+    " the palate, it is a complex journey",
+    " the first time I successfully fried an egg",
+    " the user's location to provide relevant,"
+   ],
+   "actual_next": " landing. Avoid cleverness; prioritize clarity.\n    *   *Bad:* \"Revolutionizing Your Workflow.\"\n    *   *Good:* \"Save"
+  },
+  {
+   "row": 28,
+   "fve": 0.019703686237335205,
+   "phrases": [
+    " on the page. It is a tool",
+    " on the suite was printed using **black",
+    " the site of one of the largest mon",
+    " on the suite was printed using **black",
+    " the page in question. There is no",
+    " the site of the former Clark Air Base",
+    " the food. This builds a stronger community",
+    " the site of a 19th",
+    " the **Subscription Economy**, the **Product",
+    " the table, the gold band on her"
+   ],
+   "actual_next": ". Avoid cleverness; prioritize clarity.\n    *   *Bad:* \"Revolutionizing Your Workflow.\"\n    *   *Good:* \"Save "
+  },
+  {
+   "row": 29,
+   "fve": 0.0856548547744751,
+   "phrases": [
+    ", witty, and visually striking taglines",
+    " puns, homophones, or",
+    ", but to his left eye, a",
+    ", but to his left eye, a",
+    ", but to his left eye, a",
+    ", but to his left eye, a",
+    ", but the right technique makes it simple",
+    ", but the most direct and common methods",
+    ", but the injury is not life-threatening",
+    ", and clever storage solutions that defy its"
+   ],
+   "actual_next": "ness; prioritize clarity.\n    *   *Bad:* \"Revolutionizing Your Workflow.\"\n    *   *Good:* \"Save 10 Hours"
+  },
+  {
+   "row": 30,
+   "fve": 0.011017441749572754,
+   "phrases": [
+    " your day or recharge in the afternoon.",
+    " [Brief Mission Statement, e.g.,",
+    " your brain that it\u2019s time to sleep",
+    " [Brief Mission Statement, e.g.,",
+    " your day or recharge in the afternoon.",
+    " the way you choose to spend your waking",
+    " [Brief Mission Statement, e.g.,",
+    " your brain that it\u2019s time to sleep",
+    " the industry, changing consumer preferences towards sustainability",
+    ", and I can help you structure it"
+   ],
+   "actual_next": " Workflow.\"\n    *   *Good:* \"Save 10 Hours a Week on Project Management with AutomateX.\"\n*   **Subheadline for"
+  },
+  {
+   "row": 31,
+   "fve": 0.01880645751953125,
+   "phrases": [
+    " [Brief Mission Statement, e.g.,",
+    " **Efficiency**: To make life easier",
+    " [Brief Mission Statement, e.g.,",
+    " **Save** the script as `C",
+    " **Efficiency**: To make life easier",
+    " **100% cotton blends**",
+    " **Efficiency**: To make life easier",
+    " **10\u201314 hours**",
+    ", reducing the likelihood of dizziness or",
+    " **12MP Ultra-Wide Front"
+   ],
+   "actual_next": " *Good:* \"Save 10 Hours a Week on Project Management with AutomateX.\"\n*   **Subheadline for Context:** Use the subheadline"
+  },
+  {
+   "row": 32,
+   "fve": 0.08499109745025635,
+   "phrases": [
+    " project progress. Our goal is to streamline",
+    " management, and team dynamics. Here are",
+    ", project management, and professional services.",
+    " management, and real-time monitoring. The",
+    ", and track productivity metrics. Whether you",
+    " **Project Green Table** is a multi",
+    ", and track productivity metrics. Whether you",
+    " **Efficient Cost Management:** It maxim",
+    ", and social dimensions of RNG utilization.",
+    " **Issue**: Opposition to the **D"
+   ],
+   "actual_next": " Management with AutomateX.\"\n*   **Subheadline for Context:** Use the subheadline to support the main headline by explaining *how* you deliver the"
+  },
+  {
+   "row": 33,
+   "fve": 0.00828409194946289,
+   "phrases": [
+    " **Subtitle:** A Chronological Journey Through",
+    " **Clear Everything Off:** Remove every item",
+    " **What to Expect:** This is not",
+    " **Headline:** **Is Your Head",
+    " **Key Findings by Research Question**",
+    ", and calluses on her feet that",
+    " **B2B**: Involves",
+    " **\ud83d\udca1 Example**: Replace your ",
+    " **Clear Everything Off:** Remove every item",
+    " **\ud83d\udca1 Example**: Replace your "
+   ],
+   "actual_next": " **Subheadline for Context:** Use the subheadline to support the main headline by explaining *how* you deliver the benefit or adding a key detail (e.g"
+  },
+  {
+   "row": 34,
+   "fve": 0.24301040172576904,
+   "phrases": [
+    "how* the platform works and *why",
+    "? He had planned every variable of her",
+    "how* they do it) and *",
+    "*   **Why it works:** Keeps",
+    ", how they work, their benefits,",
+    " \"which methods are most appropriate for particular",
+    " the product or service you are promoting.",
+    "*   **What it is:** Using",
+    " \"why\" and \"how,\" offering",
+    " the features of the **d\u014dB"
+   ],
+   "actual_next": "how* you deliver the benefit or adding a key detail (e.g., pricing, timeframe).\n*   **Focus on Benefits, Not Features:** Users care"
+  },
+  {
+   "row": 35,
+   "fve": 0.04817068576812744,
+   "phrases": [
+    ", or quality. So, the phrase",
+    ", and measurable outcomes. As a structural",
+    ", e.g., cloud-based platform]",
+    ", or quality. So, the phrase",
+    ", and delivery time, followed by a",
+    ", e.g., cloud-based platform]",
+    ", and social dimensions of RNG utilization.",
+    ", and a half-eaten granola",
+    ", and I can help you structure it",
+    ", e.g., most user-friendly solution"
+   ],
+   "actual_next": ").\n*   **Focus on Benefits, Not Features:** Users care about what the product does *for them*, not just what it *is*.\n   "
+  },
+  {
+   "row": 36,
+   "fve": 0.1171722412109375,
+   "phrases": [
+    " *What is the single biggest benefit?*",
+    " the outcome, you are more likely to",
+    " \"meat and matter\" of our",
+    " the pain points of our users. I",
+    " *   *Response:* Handled by",
+    " the impact of social media on relationships is",
+    " **What to Expect:** This is not",
+    " the product or service you are promoting.",
+    " *why* and *how* the",
+    " the future\u2014worrying about \""
+   ],
+   "actual_next": " what the product does *for them*, not just what it *is*.\n    *   *Feature:* \"256-bit Encryption.\"\n    *"
+  },
+  {
+   "row": 37,
+   "fve": 0.1378183364868164,
+   "phrases": [
+    " encryption, and key management. Below is",
+    "000-word novel in a single",
+    "256) for data at rest",
+    "000-word novel in a single",
+    "00g) Granulated Sugar:**",
+    "00g) Granulated Sugar:**",
+    " **12MP Front Camera** with",
+    "00g) Granulated Sugar:**",
+    " the security of the hard drive when connected",
+    ", and social dimensions of RNG utilization."
+   ],
+   "actual_next": "-bit Encryption.\"\n    *   *Benefit:* \"Keep your data safe from hackers.\"\n*   **Social Proof is Mandatory:** Build trust immediately using"
+  },
+  {
+   "row": 38,
+   "fve": 0.03326296806335449,
+   "phrases": [
+    " encryption, and key management. Below is",
+    ":** The platform automatically adjusts its offerings in",
+    ", and privacy. However, advancements in",
+    ":** The platform automatically adjusts its offerings in",
+    ", and a half-eaten granola",
+    " (e.g., cloud-based access,",
+    " and safety, electric aviation remains a theoretical",
+    ":** The DogAlong carrier described is **",
+    ", and social dimensions of RNG utilization.",
+    " **Privacy:** Higher risk of data breaches"
+   ],
+   "actual_next": ".\"\n    *   *Benefit:* \"Keep your data safe from hackers.\"\n*   **Social Proof is Mandatory:** Build trust immediately using:\n"
+  },
+  {
+   "row": 39,
+   "fve": 0.23052185773849487,
+   "phrases": [
+    " **Testimonials & Reviews:** Snippets",
+    " **Social Proof**: Positive reviews and ratings",
+    ":** Highlighting sustainability, local impact,",
+    " **Clear Everything Off:** Remove every item",
+    ":** Customer support agents can use chatbots",
+    " a screenshot, you must temporarily disable screenshot",
+    " **B2B**: Involves",
+    " **Past:** Complex data was presented in",
+    " **100% cotton blends**",
+    ", and social dynamics to demonstrate how they"
+   ],
+   "actual_next": ":\n    *   Customer testimonials with photos/names.\n    *   Logos of well-known client companies.\n    *   Trust badges (security"
+  },
+  {
+   "row": 40,
+   "fve": 0.3621112108230591,
+   "phrases": [
+    " Testimonials & Social Proof (Critical for",
+    " case studies for this research. The author",
+    " **Testimonials & Social Proof (Critical",
+    ", reviews, and surveys\u2014has emerged",
+    " **B2B**: Involves",
+    " **Testimonial Snippets:** Short quotes",
+    ", and social dimensions of RNG utilization.",
+    " **Hats and Footwear**: European",
+    ", and a half-eaten granola",
+    " **Example**: A dog bites the hand"
+   ],
+   "actual_next": " testimonials with photos/names.\n    *   Logos of well-known client companies.\n    *   Trust badges (security certificates, awards, media mentions"
+  },
+  {
+   "row": 41,
+   "fve": 0.15747374296188354,
+   "phrases": [
+    " of the most influential bands in history.",
+    " logos** on the table, which is",
+    " of the companies you *want* to",
+    " of the most significant lifestyle decisions people face",
+    " of the two victims involved was shot in",
+    " **Testimonial Snippets:** Short quotes",
+    " of the most significant lifestyle decisions people face",
+    " of the company\u2019s social media handles for",
+    " of the most significant and enduring relationships in",
+    " of the day swapped for the creeping chill"
+   ],
+   "actual_next": " of well-known client companies.\n    *   Trust badges (security certificates, awards, media mentions).\n    *   Star ratings and review counts.\n"
+  },
+  {
+   "row": 42,
+   "fve": 0.07572484016418457,
+   "phrases": [
+    " **\ud83d\udca1 Example**: Replace your ",
+    ", FAQ, Testimonials, Pricing,",
+    " **Visual:** You\u2019re in bright neon",
+    ".  **The Participants:** Invite a",
+    " **What to Expect:** This is not",
+    ", and testimonials specifically for your target audience",
+    " **\ud83d\udca1 Example**: Replace your ",
+    " **Why it works:** Everyone needs to",
+    ", and social dimensions of RNG utilization.",
+    " **B2B**: Involves"
+   ],
+   "actual_next": "    *   Trust badges (security certificates, awards, media mentions).\n    *   Star ratings and review counts.\n*   **Address Objections:**"
+  },
+  {
+   "row": 43,
+   "fve": 0.005249500274658203,
+   "phrases": [
+    " **Scarcity:** High demand,",
+    ", and social dimensions of RNG utilization.",
+    " **\ud83d\udca1 Example**: Replace your ",
+    " **Clear Everything Off:** Remove every item",
+    ", and a sense of agency, which",
+    " **\ud83d\udca1 Example**: Replace your ",
+    " **Psychographics:** Values minimalism,",
+    ", and I can help you structure it",
+    " **B2B**: Involves",
+    ", and the predictable laws of physics."
+   ],
+   "actual_next": " *   Trust badges (security certificates, awards, media mentions).\n    *   Star ratings and review counts.\n*   **Address Objections:** Ant"
+  },
+  {
+   "row": 44,
+   "fve": 0.024868369102478027,
+   "phrases": [
+    ", or government grant portals. Look for",
+    ", and trust** that are essential for",
+    ", e.g., cloud-based platform]",
+    ", and social dimensions of RNG utilization.",
+    ", and quality assurance. Here\u2019s a",
+    " (e.g., LEED, B",
+    ", and social dynamics to demonstrate how they",
+    ", and a half-eaten granola",
+    ", and social dimensions of RNG utilization.",
+    ", e.g., cloud-based platform]"
+   ],
+   "actual_next": ", awards, media mentions).\n    *   Star ratings and review counts.\n*   **Address Objections:** Anticipate why someone might say \""
+  },
+  {
+   "row": 45,
+   "fve": 0.029811978340148926,
+   "phrases": [
+    ", or government grant portals. Look for",
+    ", or specific security ratings) about the",
+    ", and social dynamics to demonstrate how they",
+    ", or system before granting access to resources",
+    ", and social dimensions of RNG utilization.",
+    ", and quality assurance. Here\u2019s a",
+    ", or specific security ratings) about the",
+    ", and social dynamics to demonstrate how they",
+    ", and a half-eaten granola",
+    ", and quality assurance. Here\u2019s a"
+   ],
+   "actual_next": ", media mentions).\n    *   Star ratings and review counts.\n*   **Address Objections:** Anticipate why someone might say \"no\""
+  },
+  {
+   "row": 46,
+   "fve": 0.03157275915145874,
+   "phrases": [
+    " hesitate to **click on the magnifying",
+    " to buy, or contact support for assistance",
+    " not be able to attend at that time",
+    " to purchase extra bottles (beyond the",
+    "\u2019t just smell old; it smelled of",
+    " to move beyond simple ecological didacticism",
+    " to resent intrusion. Now, stranded miles",
+    " not have the luxury of time to waste",
+    " to the volunteers who knocked on doors rain",
+    " to be a kangaroo's knee is"
+   ],
+   "actual_next": " say \"no\" and answer it preemptively. Use FAQ sections or bullet points to address price, ease of use, or risk (e.g.,"
+  },
+  {
+   "row": 47,
+   "fve": 0.028629064559936523,
+   "phrases": [
+    " that explicitly states: **\"This sauce goes",
+    " to highlight three areas where this shortfall is",
+    ", and testimonials specifically for an **e",
+    " to address issues before they become critical.",
+    ", and social dimensions of RNG utilization.",
+    " that projects are completed on time, within",
+    ", and I can help you structure it",
+    " to the specific urban constraints of 1",
+    " that projects are completed on time, within",
+    ", and a half-eaten granola"
+   ],
+   "actual_next": " to address price, ease of use, or risk (e.g.,"
+  },
+  {
+   "row": 48,
+   "fve": 0.02742481231689453,
+   "phrases": [
+    "I am not doing this,* she thought",
+    ". The air in the cabin was thick",
+    ", a tingling numbness that races",
+    " I felt a profound humility wash over me",
+    ", the world was painted in shades of",
+    ". I was hyperventilating",
+    " the fog was a tactical advantage and a",
+    ", the air rushing past her ears with",
+    " the womb. This image alone sets the",
+    ", the night ten years ago when Elias"
+   ],
+   "actual_next": "\n\nThe darkness was not empty; it was thick, heavy, and warm, like being wrapped in a woolen blanket woven from sleep. For so long,"
+  },
+  {
+   "row": 49,
+   "fve": 0.14141321182250977,
+   "phrases": [
+    " not a storm,\" whispered Elias. He",
+    " not a burden to be shed, nor",
+    " not a single method but a framework that",
+    " the dark, dead weight of the night",
+    "\u2019t just smell old; it smelled of",
+    " a blank page, paralyzed by the overwhelming",
+    " not a storm,\" whispered Elias. He",
+    " a blank page, paralyzed by the overwhelming",
+    "\u2019t just smell old; it smelled of",
+    " a passive state of rest; it is"
+   ],
+   "actual_next": " empty; it was thick, heavy, and warm, like being wrapped in a woolen blanket woven from sleep. For so long, the silence was my only"
+  },
+  {
+   "row": 50,
+   "fve": 0.05733287334442139,
+   "phrases": [
+    " of golden hue and comforting fragrance that slows",
+    " woven into the fabric of the mundane,",
+    " of ink on white paper, a map",
+    " from granite and silence\u2014a architect of severe",
+    " of the day swapped for the creeping chill",
+    " of the day, yet I felt like",
+    " from granite and silence\u2014a architect of severe",
+    " of the day, yet I felt like",
+    " of the day, yet I felt like",
+    " of the day swapped for the creeping chill"
+   ],
+   "actual_next": " from sleep. For so long, the silence was my only companion, a hushed prayer I whispered without a voice. But then, a pressure built\u2014not painful"
+  },
+  {
+   "row": 51,
+   "fve": 0.05878084897994995,
+   "phrases": [
+    ", but a pressure drop, a subtle",
+    ", but a tangible record of deep time",
+    ", but a fundamental shift in how we",
+    ", but it does not provide any physical",
+    ", but a tangible record of deep time",
+    ", but with eyes that still spark with",
+    ", but to his left eye, a",
+    ", but a fundamental shift in how we",
+    ", but the injury is not life-threatening",
+    ", but a tool of precision, history"
+   ],
+   "actual_next": ", but urgent\u2014a drumming in my blood that screamed of *now*.\n\nWith a final, desperate push, I tore through the veil.\n\nThe air"
+  },
+  {
+   "row": 52,
+   "fve": 0.03674185276031494,
+   "phrases": [
+    ", a tingling numbness that races",
+    ", a sound like dry branches snapping,",
+    ", and the pulsing, atonal",
+    ", a tingling numbness that races",
+    ", and the blood rushing in my ears",
+    ", a sound like dry branches snapping,",
+    ", and the pulsing, atonal",
+    ", a tingling numbness that races",
+    ", and the sterile hum of servers.",
+    ", and the blood rushing in my ears"
+   ],
+   "actual_next": " that screamed of *now*.\n\nWith a final, desperate push, I tore through the veil.\n\nThe air hit me like a cold, sweet wine."
+  },
+  {
+   "row": 53,
+   "fve": 0.03702270984649658,
+   "phrases": [
+    ", *I am no longer safe.",
+    " to scream, to fight, to do",
+    ", \"I think I'll only post",
+    " that the work you *do* choose",
+    ", urging them to reach their highest potential",
+    ", a sound like dry branches snapping,",
+    ", \"I want to make sure I",
+    " to the volunteers who knocked on doors rain",
+    ", a sound like dry branches snapping,",
+    ", urging them to reach their highest potential"
+   ],
+   "actual_next": " of *now*.\n\nWith a final, desperate push, I tore through the veil.\n\nThe air hit me like a cold, sweet wine. It tasted"
+  },
+  {
+   "row": 54,
+   "fve": 0.04073607921600342,
+   "phrases": [
+    " of a life Victoria had refused to discuss",
+    " the need for `#ifdef` compilation",
+    " of a life Victoria had refused to discuss",
+    " the promise of dawn. I moved through",
+    " of a life Victoria had refused to discuss",
+    " a profound, crushing loneliness. The connection",
+    " of a second before contact. And yet",
+    " the need to vent due to its high",
+    " of a new era defined by sustained presence",
+    " a sound ripped through the silence\u2014sh"
+   ],
+   "actual_next": " *now*.\n\nWith a final, desperate push, I tore through the veil.\n\nThe air hit me like a cold, sweet wine. It tasted of"
+  },
+  {
+   "row": 55,
+   "fve": 0.057527244091033936,
+   "phrases": [
+    ", a strange unease settled in the",
+    " looked at his hands; they were solid",
+    ", a sound like dry branches snapping,",
+    " I felt a profound humility wash over me",
+    ", watching the door, convinced he had",
+    " and the profound. It was a hum",
+    ", I realized I was standing in the",
+    " the strange, buoyant gravity of the",
+    " and the spirits. The Hopi believe",
+    ", watching a spreadsheet that refused to balance"
+   ],
+   "actual_next": " gasped\u2014a sound I had never made. I was no longer the crawler, the hungry, blind seeker of leaves. I was soft. I was blue."
+  },
+  {
+   "row": 56,
+   "fve": 0.027115821838378906,
+   "phrases": [
+    " a sound ripped through the silence\u2014sh",
+    " that had become the soundtrack to my insomnia",
+    ", a sound like dry branches snapping,",
+    " that had become the soundtrack to my insomnia",
+    ", a sound like dry branches snapping,",
+    " that shattered my confidence. I had applied",
+    ", a sound like dry branches snapping,",
+    " that didn\u2019t exist. He would tilt",
+    ", a sound like dry branches snapping,",
+    ", but a sheath of glass,"
+   ],
+   "actual_next": " I had never made. I was no longer the crawler, the hungry, blind seeker of leaves. I was soft. I was blue.\n\nAnd then,"
+  },
+  {
+   "row": 57,
+   "fve": 0.020343422889709473,
+   "phrases": [
+    ", the metal gleams, and the",
+    ", a slow, deliberate exhale from",
+    ", the skin shifting hue from pale flesh",
+    ", the air rushing past her ears with",
+    ", the skin shifting hue from pale flesh",
+    ", the metal gleams, and the",
+    ", the particles are **tangled**.",
+    ", the air rushing past her ears with",
+    ", the barista, the stranger who",
+    ", the skin shifting hue from pale flesh"
+   ],
+   "actual_next": ", painfully beautifully, my wings unfurled.\n\nIt felt as though I were pulling silk from my own skin, threads of iridescent velvet stretching outward"
+  },
+  {
+   "row": 58,
+   "fve": 0.04420804977416992,
+   "phrases": [
+    "loom from Sarah\u2019s grandmother, exploded against",
+    ", stretching long and distorted across the surface",
+    ", a balloon vendor\u2019s cart, and",
+    ", a sound like dry branches snapping,",
+    " the wings, and the weight of the",
+    ", a tingling numbness that races",
+    " the petals of the cherry blossom, they",
+    ", and the sterile hum of servers.",
+    ", a wall he had to push through",
+    " the window is very narrow** (the"
+   ],
+   "actual_next": "urled.\n\nIt felt as though I were pulling silk from my own skin, threads of iridescent velvet stretching outward. I watched, mesmerized,"
+  },
+  {
+   "row": 59,
+   "fve": 0.03170192241668701,
+   "phrases": [
+    " the petals of identical white blossoms.",
+    " the wings, and the quiet, satisfied",
+    " the fog was a tactical advantage and a",
+    " the exposed skin of my cheeks with a",
+    " the fabric was, the higher the likelihood",
+    " the exposed skin of my cheeks with a",
+    " the wings, and the quiet, satisfied",
+    " the fog was a tactical advantage and a",
+    " the **Papacy**. His coronation",
+    " the world had been rendered in grayscale,"
+   ],
+   "actual_next": " the crumpled parchment smoothed into canvases of midnight blue, edged with bands of obsidian and speckled with tiny, startling eyes of white. They"
+  },
+  {
+   "row": 60,
+   "fve": 0.048265159130096436,
+   "phrases": [
+    " black, and transparent\u2014into a flowing",
+    ", and a half-eaten granola",
+    " black, dead weight in her hand.",
+    ", and the sterile white of the server",
+    ", and the sterile white of the server",
+    ", and the sterile white of the server",
+    ", and the ocean breeze. We dev",
+    " black, and transparent\u2014into a flowing",
+    ", and a half-eaten granola",
+    ", and the sterile white of the server"
+   ],
+   "actual_next": "idian and speckled with tiny, startling eyes of white. They were too heavy, too fragile, teetering on the brink of collapse. I felt"
+  },
+  {
+   "row": 61,
+   "fve": 0.04630935192108154,
+   "phrases": [
+    "led with dried or fresh herbs like **",
+    " of golden hue and comforting fragrance that slows",
+    "led with dried or fresh herbs like **",
+    " of stars in a galaxy, or the",
+    "led blazer lies in its versatility;",
+    " with a red \"X\" over it",
+    ", and a half-eaten granola",
+    " of the day swapped for the creeping chill",
+    "led blazer lies in its versatility;",
+    ", and the sterile hum of servers."
+   ],
+   "actual_next": "led with tiny, startling eyes of white. They were too heavy, too fragile, teetering on the brink of collapse. I felt a surge of terror"
+  },
+  {
+   "row": 62,
+   "fve": 0.0014299750328063965,
+   "phrases": [
+    " a polka-dot suit who had made",
+    " the wingtips of the 73",
+    " a small decorative mallet), players must",
+    " **100% cotton blends**",
+    " a pulsating vein of the city.",
+    ", and a half-eaten granola",
+    " **10\u201314 hours**",
+    " a touch of elegance and low-maintenance",
+    " the **Papacy**. His coronation",
+    " a few basic tools and a little patience"
+   ],
+   "actual_next": " tiny, startling eyes of white. They were too heavy, too fragile, teetering on the brink of collapse. I felt a surge of terror, sharp"
+  },
+  {
+   "row": 63,
+   "fve": 0.0509830117225647,
+   "phrases": [
+    " the edge of a floating platform made of",
+    " the spine, a tingling numbness",
+    " the wings, and the air rushing past",
+    " the fringes of the city, trying",
+    " the weight** of dried mushrooms (since",
+    " the table, the gold band on her",
+    " the weight** of dried mushrooms (since",
+    " the fringes of the city, trying",
+    " the exposed skin of my cheeks with a",
+    " the weight of a life he had refused"
+   ],
+   "actual_next": " the brink of collapse. I felt a surge of terror, sharp as a thorn. *Will they hold?* The question fluttered in my chest, mir"
+  }
+ ]
+}

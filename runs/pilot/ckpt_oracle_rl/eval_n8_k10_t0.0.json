@@ -1,0 +1,1099 @@
+{
+ "ckpt": "/work/pilot/ckpt_oracle_rl",
+ "n": 8,
+ "k": 10,
+ "rows": 256,
+ "temperature": 0.0,
+ "fve": 0.23557390389032662,
+ "fve_random": 0.0011387420818209648,
+ "examples": [
+  {
+   "row": 0,
+   "fve": 0.24569255113601685,
+   "phrases": [
+    " for your incredible dedication during this project.",
+    "! Your hard work and attention to detail",
+    " for your contribution to [Project Name/",
+    " for your relentless effort during this project.",
+    " for your hard work on the [Project",
+    " for your exceptional dedication and the consistent effort",
+    " [Your Name]\u2019s hard work",
+    " for your incredible dedication and the late nights",
+    " to [Your Last Name] for your",
+    " for your extraordinary effort and dedication during the"
+   ],
+   "actual_next": " for your incredible work on [Project Name]\n\nHi [Coworker's Name],\n\nI hope you\u2019re having a wonderful week.\n\nI wanted to"
+  },
+  {
+   "row": 1,
+   "fve": 0.29069995880126953,
+   "phrases": [
+    " tight deadline for the [Project Name/",
+    " project during a particularly stressful period. You",
+    " challenging deadline. I wanted to take a",
+    " crunch of this project. We pulled off",
+    " particularly demanding or late-stage project. According",
+    " long hours we pulled during the [Project",
+    " deadline for [Project Name/Deliver",
+    " intense period of deadlines, or just because",
+    " [Project Deadline]. To ensure we meet",
+    " particularly stressful project. You mentioned you were"
+   ],
+   "actual_next": " wonderful week.\n\nI wanted to take a moment to sincerely thank you for your diligence and dedication to the [Project Name] project. As we cross the finish"
+  },
+  {
+   "row": 2,
+   "fve": 0.5684304237365723,
+   "phrases": [
+    " wanted to take a moment to tell you",
+    " wanted to reach out and let you know",
+    "\u2019m writing to share some exciting news that",
+    " wanted to take a moment to express how",
+    " wanted to personally assure you that we are",
+    " just wanted to take a moment to tell",
+    " wanted to tell you that I truly know",
+    " wanted to take a moment to reflect on",
+    " wanted to share that I\u2019ve decided to",
+    " wanted to say thank you for the time"
+   ],
+   "actual_next": " wanted to take a moment to sincerely thank you for your diligence and dedication to the [Project Name] project. As we cross the finish line, I\u2019ve been"
+  },
+  {
+   "row": 3,
+   "fve": 0.37055933475494385,
+   "phrases": [
+    " Project] or [Project Name] project",
+    " project. [Insert Brief Project Description/",
+    "] project. Specifically, I would like",
+    " project. [Insert Brief Project Description/",
+    "] project. We are excited about the",
+    " project. As we discussed, [Client",
+    "] project. Specifically, I would like",
+    "] initiative. Its primary objective is to",
+    " project. The client presentation is in four",
+    "] project. We are writing to request"
+   ],
+   "actual_next": "] project. As we cross the finish line, I\u2019ve been reflecting on how pivotal your contribution was to our success, and I couldn\u2019t let the moment pass"
+  },
+  {
+   "row": 4,
+   "fve": 0.1207284927368164,
+   "phrases": [
+    ", I wanted to take a moment to",
+    ", I can\u2019t help but feel that",
+    ", I wanted to pause and reflect on",
+    ", I\u2019m reminded that this milestone is",
+    ", I wanted to take a moment to",
+    " as we look back at how far we",
+    ", I realize that this project has reached",
+    ", I wanted to take a moment to",
+    ", I am incredibly proud of the progress",
+    ", it\u2019s clear that the project is"
+   ],
+   "actual_next": ", I\u2019ve been reflecting on how pivotal your contribution was to our success, and I couldn\u2019t let the moment pass without expressing my gratitude.\n\nI was particularly"
+  },
+  {
+   "row": 5,
+   "fve": 0.2723771929740906,
+   "phrases": [
+    " your role has been in making this success",
+    " your contribution was to the overall success of",
+    " your role in our team\u2019s success.",
+    " how crucial your contribution was. The feedback",
+    " your presence was to [your specific impact",
+    " you were to our team\u2019s success.",
+    " your contributions have been instrumental in [mention",
+    " the role you played in my life during",
+    " your support has been for this project\u2019s",
+    " your contribution was to the overall success of"
+   ],
+   "actual_next": " your contribution was to our success, and I couldn\u2019t let the moment pass without expressing my gratitude.\n\nI was particularly impressed by your attention to detail during the"
+  },
+  {
+   "row": 6,
+   "fve": 0.46312767267227173,
+   "phrases": [
+    " wanted to take a moment to tell you",
+    " want to express my sincere appreciation for the",
+    " wanted to share how grateful I am for",
+    " wanted to personally let you know how impressed",
+    " wanted to take a moment to tell you",
+    " am writing to share some feedback regarding [",
+    " want to highlight that I truly value the",
+    " wanted to make sure you knew how deeply",
+    " just wanted to take a moment to tell",
+    " would like to express my sincere appreciation for"
+   ],
+   "actual_next": " couldn\u2019t let the moment pass without expressing my gratitude.\n\nI was particularly impressed by your attention to detail during the [specific phase, e.g., final review"
+  },
+  {
+   "row": 7,
+   "fve": 0.45702236890792847,
+   "phrases": [
+    " particularly impressed by your [mention a specific",
+    " deeply inspired by your dedication to [mention",
+    " particularly struck by your emphasis on [mention",
+    " particularly impressed by your [mention a specific",
+    " especially impressed by your [mention a specific",
+    " particularly struck by how much I appreciated your",
+    " amazed by the ingenuity of your dedication",
+    " particularly inspired by your [mention a specific",
+    " particularly struck by your emphasis on [mention",
+    " deeply impressed by your dedication to [mention"
+   ],
+   "actual_next": " particularly impressed by your attention to detail during the [specific phase, e.g., final review/data analysis] stage. Noticing those inconsistencies and taking the extra time"
+  },
+  {
+   "row": 8,
+   "fve": 0.27770256996154785,
+   "phrases": [
+    " attention to detail. You noticed when the",
+    " ability to [quickly adapt to requirements",
+    " meticulous attention to detail and your consistent dedication",
+    " dedication to [specific quality, e.g",
+    " ability to [solve specific problem]. We",
+    " professionalism, and commitment to [Key Value",
+    " thorough analysis of the project requirements and your",
+    " your relentless efforts in coordinating [mention specific",
+    " ability to handle complex queries and deliver detailed",
+    " attention to detail during the review process."
+   ],
+   "actual_next": " attention to detail during the [specific phase, e.g., final review/data analysis] stage. Noticing those inconsistencies and taking the extra time to refine the deliver"
+  },
+  {
+   "row": 9,
+   "fve": 0.21816736459732056,
+   "phrases": [
+    " and attention to detail in [Project/",
+    ", particularly in the way you handled [",
+    " and the thoroughness of your report on",
+    " and the meticulous attention to detail you brought",
+    ", especially given the late-night edits you",
+    " and the rigorous quality of your work on",
+    " and the thoroughness with which you proof",
+    " and the accuracy of your final report.",
+    " during the review of the proposal for [",
+    " and the care you took in [mention"
+   ],
+   "actual_next": " during the [specific phase, e.g., final review/data analysis] stage. Noticing those inconsistencies and taking the extra time to refine the deliverables made a"
+  },
+  {
+   "row": 10,
+   "fve": 0.2528143525123596,
+   "phrases": [
+    " specific task or project, e.g.,",
+    " example: \"I appreciate you taking the",
+    " area where you contributed] project. Specifically",
+    " specific task or phase, e.g.,",
+    " specific aspect of the project (e.g",
+    " example: \"a time when you succeeded",
+    " specific task or area where they encountered difficulty",
+    " specific example of a task they enjoyed].",
+    " project milestone or deliverable name, e",
+    " specific area, e.g., `[Data"
+   ],
+   "actual_next": " phase, e.g., final review/data analysis] stage. Noticing those inconsistencies and taking the extra time to refine the deliverables made a significant difference in the"
+  },
+  {
+   "row": 11,
+   "fve": 0.17858707904815674,
+   "phrases": [
+    "] phase]. Key activities include [data",
+    "] phase. [Optional: specific task",
+    " analysis] because [brief reason, e",
+    "] section. Please provide the **mean",
+    " phase] of the [Project Name]",
+    ", data analysis, report drafting, and",
+    "] stage. For example: data collection",
+    " or drafting phase]. Specifically, I would",
+    "] section. Please provide the **mean",
+    "] phase. [Optional: specific task"
+   ],
+   "actual_next": "] stage. Noticing those inconsistencies and taking the extra time to refine the deliverables made a significant difference in the final quality. Your commitment to excellence didn\u2019t"
+  },
+  {
+   "row": 12,
+   "fve": 0.09536856412887573,
+   "phrases": [
+    " only did he notice the subtle cracks in",
+    " only, but also by anticipating and resolving",
+    " only, but by noticing when a colleague",
+    " only did she take the time to truly",
+    " only, but by noticing when a colleague",
+    " to mention that, not only did you",
+    " only, but also by noticing when a",
+    " only did he notice the subtle cracks in",
+    " but also by noticing when a colleague is",
+    "ably, he took the time to notice"
+   ],
+   "actual_next": "icing those inconsistencies and taking the extra time to refine the deliverables made a significant difference in the final quality. Your commitment to excellence didn\u2019t just elevate our output"
+  },
+  {
+   "row": 13,
+   "fve": 0.3678150773048401,
+   "phrases": [
+    " Your dedication to [mention a specific effort",
+    " Additionally, your consistent attendance and positive attitude",
+    " I was particularly impressed by your [mention",
+    " Your willingness to work late and handle [",
+    " This level of dedication directly contributes to our",
+    " Your hard work and consistent effort during [",
+    " It was your relentless drive and unwav",
+    " Furthermore, your consistent attendance and positive attitude",
+    " Your ability to handle this complexity is a",
+    " I truly appreciate the time and energy you"
+   ],
+   "actual_next": " Your commitment to excellence didn\u2019t just elevate our output; it set a wonderful standard for the entire team and gave us all the confidence to present our work to ["
+  },
+  {
+   "row": 14,
+   "fve": 0.2885989546775818,
+   "phrases": [
+    " has been a source of strength and inspiration",
+    " made the rest of the team feel appreciated",
+    " has inspired me to work harder and stay",
+    " kept our team spirit alive and made our",
+    " was incredibly inspiring. Your energy and clarity",
+    " have helped lift the team\u2019s morale.",
+    " and your positive attitude have made this place",
+    " made a significant positive impact on our team",
+    " has been a stabilizing and inspiring presence",
+    " and contagious enthusiasm made the entire team feel"
+   ],
+   "actual_next": " created a collaborative spirit that truly lifted everyone up. It\u2019s a privilege to work alongside someone who combines such professional skill with genuine care for the team\u2019s goals."
+  },
+  {
+   "row": 15,
+   "fve": 0.2122739553451538,
+   "phrases": [
+    " that has energized our team and created",
+    " that everyone in the team can emulate.",
+    " that lifted everyone else up. I wanted",
+    " that permeated the team\u2019s culture.",
+    " that inspired the entire team to work harder",
+    " that fostered a collaborative and energetic atmosphere",
+    " that I really appreciated. You didn\u2019t",
+    " that resonated throughout the room and lifted",
+    " that was contagious. He had a way",
+    " that has united us all. I\u2019ve"
+   ],
+   "actual_next": " that truly lifted everyone up. It\u2019s a privilege to work alongside someone who combines such professional skill with genuine care for the team\u2019s goals.\n\nTo show my"
+  },
+  {
+   "row": 16,
+   "fve": 0.4720717668533325,
+   "phrases": [
+    "\u2019s been a pleasure working alongside you.",
+    " was refreshing to work with such a supportive",
+    "\u2019s great to have you here. It",
+    " was truly rewarding to witness your collaborative efforts",
+    " is a privilege to work alongside such dedicated",
+    " was incredibly helpful to have you there.",
+    "\u2019s nice to know that even though we",
+    " was inspiring to work with such dedicated professionals",
+    "\u2019s great to know I have your support",
+    " is a pleasure to work with such dedicated"
+   ],
+   "actual_next": "\u2019s a privilege to work alongside someone who combines such professional skill with genuine care for the team\u2019s goals.\n\nTo show my appreciation, I\u2019d love to treat"
+  },
+  {
+   "row": 17,
+   "fve": 0.35596299171447754,
+   "phrases": [
+    " someone with such dedication. I truly admire",
+    " someone as reliable and kind as you.",
+    " such a team. Your consistent dedication and",
+    " you. It\u2019s inspiring to see colleagues",
+    " such a colleague. Your consistent dedication and",
+    " someone who works hard and has such dedication",
+    " you. I deeply value the professionalism and",
+    " such a person. The text only states",
+    " such a dedicated team. I am writing",
+    " someone who demonstrates such profound dedication to our"
+   ],
+   "actual_next": " someone who combines such professional skill with genuine care for the team\u2019s goals.\n\nTo show my appreciation, I\u2019d love to treat you to lunch or coffee next"
+  },
+  {
+   "row": 18,
+   "fve": 0.17233991622924805,
+   "phrases": [
+    " and such grace. I want you to",
+    " with such professionalism and kindness. I also",
+    " with strong interpersonal skills and a collaborative nature",
+    " and such gracious spirit. I remain deeply",
+    " with such technical skill and heartfelt dedication.",
+    " alongside strong technical ability. The author values",
+    " and professionalism with such grace. I remain",
+    " with such integrity and warmth. I remain",
+    " and professionalism with such grace. I remain",
+    " but also with strong character and collaborative spirit"
+   ],
+   "actual_next": " with genuine care for the team\u2019s goals.\n\nTo show my appreciation, I\u2019d love to treat you to lunch or coffee next week. Let me know what"
+  },
+  {
+   "row": 19,
+   "fve": 0.4283134341239929,
+   "phrases": [
+    " show my appreciation, I\u2019d like to",
+    " celebrate your hard work, I\u2019d like",
+    " say thanks, I wanted to take a",
+    " honor of [Your Name/Company],",
+    " show our appreciation for your continued support,",
+    " To celebrate this, I\u2019d like to",
+    " express my gratitude, I would like to",
+    " as a token of my sincere appreciation,",
+    " honor of [Your Name/Company],",
+    " show my appreciation, I\u2019d like to"
+   ],
+   "actual_next": " show my appreciation, I\u2019d love to treat you to lunch or coffee next week. Let me know what day works best for you\u2014I think we could both use"
+  },
+  {
+   "row": 20,
+   "fve": 0.46374213695526123,
+   "phrases": [
+    " grab coffee or lunch at a nearby spot",
+    " treat you to lunch at [Restaurant Name",
+    " buy you a coffee? I feel like",
+    " take you out for lunch at that new",
+    " treat yourself to a meal at [Popular",
+    " buy you a celebratory coffee (my",
+    " invite you to join me for coffee or",
+    " take you out for a celebratory lunch",
+    " buy lunch together at a nice restaurant.",
+    " treat you to a meal at [Popular"
+   ],
+   "actual_next": " treat you to lunch or coffee next week. Let me know what day works best for you\u2014I think we could both use a chance to relax and celebrate a job"
+  },
+  {
+   "row": 21,
+   "fve": 0.39713066816329956,
+   "phrases": [
+    " you to lunch at that spot we both",
+    " you to dinner as a gesture of apology",
+    " you to coffee? I\u2019ll pay.",
+    " you to dinner at that Italian place you",
+    " you to treat [Colleague's Name",
+    " you to lunch at that spot we both",
+    " you to a coffee or treat on me",
+    " you to dinner as a gesture of apology",
+    " you to a meal at a local cafe",
+    " you buy me a drink, Miller?"
+   ],
+   "actual_next": " you to lunch or coffee next week. Let me know what day works best for you\u2014I think we could both use a chance to relax and celebrate a job well"
+  },
+  {
+   "row": 22,
+   "fve": 0.40753912925720215,
+   "phrases": [
+    "Thank you for your continued support and hard",
+    "I truly appreciate you taking the time to",
+    "Thanks again for your continued support of [",
+    "Warm regards, [Your Name]\u201d",
+    "Thank you for your hard work and dedication",
+    "I wanted to take a moment to express",
+    "Thank you for your continued support and hard",
+    "I really appreciate you taking the time to",
+    "Best wishes for your future endeavors. Please",
+    "Thank you for your continued support and hard"
+   ],
+   "actual_next": "Thanks again for everything you do.\n\nWarmly,\n\n[Your Name]<|im_end|>"
+  },
+  {
+   "row": 23,
+   "fve": 0.22570186853408813,
+   "phrases": [
+    "] [Your Job Title] at [",
+    "] [Your Signature/Title] |",
+    "[Your Name], [Your Employee ID",
+    "] | [Your Position/Title]",
+    "] [Your Name] [Your Contact",
+    "] [Your Job Title] at [",
+    "Signature] (Optional but recommended for professionalism",
+    "] [Your Position/Title] at",
+    "**[Your Name]** \u2013 [Your",
+    "] [Your Title] [Your Contact"
+   ],
+   "actual_next": "]<|im_end|>"
+  },
+  {
+   "row": 24,
+   "fve": 0.21986103057861328,
+   "phrases": [
+    " page should have a clear, single call",
+    " landing page should eliminate all navigation links,",
+    " page should have a single, clear purpose",
+    " page is designed to convert visitors into customers",
+    " landing page should **minimize distractions**",
+    " page should have a clear, single call",
+    " page should have a clear, single call",
+    " page should have a clear, single call",
+    " page should have a clear, single call",
+    " landing page should have a clear, single"
+   ],
+   "actual_next": " page must be concise, benefit-driven, and highly relevant to the traffic source.\n\n*   **Headline First:** Your headline should clearly state the **primary"
+  },
+  {
+   "row": 25,
+   "fve": 0.34412461519241333,
+   "phrases": [
+    " clearly state the core problem this product/service",
+    " be clear, benefit-focused, and attention",
+    " headline that grabs attention and addresses a pain",
+    " clearly state the value proposition: what the",
+    " immediately address the visitor\u2019s pain point or",
+    " clearly communicate the unique value proposition, headline",
+    " be a clear, concise summary of the",
+    " immediately convey the core benefit and target audience",
+    " answer the question: \"What problem does",
+    " be the headline of a press release,"
+   ],
+   "actual_next": " clearly state the **primary benefit** of your offer within 3\u20135 seconds of landing. Avoid cleverness; prioritize clarity.\n    *   *Bad"
+  },
+  {
+   "row": 26,
+   "fve": 0.2557864785194397,
+   "phrases": [
+    " clearly state what the product or service does",
+    " the value proposition: what the product actually",
+    " clearly state the problem or question you are",
+    " explain what the product does and how it",
+    " convey the core value proposition: clarity,",
+    " state the benefit of the product or service",
+    " communicate the value of your offering. A",
+    " clearly states what problem the product solves.",
+    " explain what the product does and how it",
+    " headline and subheadline that focus on clarity"
+   ],
+   "actual_next": " state the **primary benefit** of your offer within 3\u20135 seconds of landing. Avoid cleverness; prioritize clarity.\n    *   *Bad:*"
+  },
+  {
+   "row": 27,
+   "fve": 0.3067149519920349,
+   "phrases": [
+    " the page loads. The bounce rate spikes",
+    " a user visits your site. Aim for",
+    " landing on the page. The average user",
+    " the user views the site (within the",
+    " of arrival. Users should see your key",
+    " they enter the page. Fast exit:",
+    " the user views the site (within the",
+    " the first 3 seconds of your landing",
+    " they arrive on the page. The goal",
+    " the user views the site (within the"
+   ],
+   "actual_next": " landing. Avoid cleverness; prioritize clarity.\n    *   *Bad:* \"Revolutionizing Your Workflow.\"\n    *   *Good:* \"Save"
+  },
+  {
+   "row": 28,
+   "fve": 0.08528631925582886,
+   "phrases": [
+    " on the page. This is the first",
+    " on the landing page. Users arrive,",
+    " on the site. The cookie policy applies",
+    " on the page. This reduces cognitive load",
+    " on the page. Users arrive, read",
+    " on the site. The cookie policy applies",
+    " on the page. This is the first",
+    " on the landing page. Users arrive,",
+    " on the site. The cookie policy applies",
+    " on the page. This reduces cognitive load"
+   ],
+   "actual_next": ". Avoid cleverness; prioritize clarity.\n    *   *Bad:* \"Revolutionizing Your Workflow.\"\n    *   *Good:* \"Save "
+  },
+  {
+   "row": 29,
+   "fve": 0.3248339295387268,
+   "phrases": [
+    " puns or clever headlines. Focus on",
+    " clever or witty taglines that may not",
+    " puns or cryptic phrasing.",
+    " cleverness over clarity. The headline must",
+    " wordplay that doesn\u2019t immediately reveal its",
+    " or cleverness. Avoid being overly crypt",
+    " puns or clever headlines. Focus on",
+    " cleverness over clarity. The headline must",
+    " puns or cryptic phrasing.",
+    " or overly clever headlines. Focus on clarity"
+   ],
+   "actual_next": "ness; prioritize clarity.\n    *   *Bad:* \"Revolutionizing Your Workflow.\"\n    *   *Good:* \"Save 10 Hours"
+  },
+  {
+   "row": 30,
+   "fve": 0.10828042030334473,
+   "phrases": [
+    " [Product/Service] for [Target",
+    " Your Life with Our Productivity Platform\"",
+    " business operations or daily routines. [Optional",
+    " [Company Name]\u2019s digital transformation",
+    " your daily routine with [Product/Service",
+    " [Product/Service] Transformation: Stream",
+    " your life with our productivity platform.\"*",
+    " [Company Name]\u2019s digital transformation",
+    " [Product/Service] for [Target",
+    " your life with our productivity platform.\"*"
+   ],
+   "actual_next": " Workflow.\"\n    *   *Good:* \"Save 10 Hours a Week on Project Management with AutomateX.\"\n*   **Subheadline for"
+  },
+  {
+   "row": 31,
+   "fve": 0.2995367646217346,
+   "phrases": [
+    " [Product/Service] saves time by",
+    " [Save 10 Hours/Week",
+    " Automate data processing to reduce manual labor",
+    " [Software Name] reduces implementation time by",
+    " [Save 10 Hours/Week",
+    " streamline your workflow. Our unique value proposition",
+    " [Product Name] that streamline [specific",
+    " [Save 10 Hours/Week",
+    " [Software Name] helps you save time",
+    " [Product/Service] that saves ["
+   ],
+   "actual_next": " *Good:* \"Save 10 Hours a Week on Project Management with AutomateX.\"\n*   **Subheadline for Context:** Use the subheadline"
+  },
+  {
+   "row": 32,
+   "fve": 0.23200595378875732,
+   "phrases": [
+    " Management Software (PMS) with automated",
+    " project management tool. As a project manager",
+    " Management Software (PMS) with automated",
+    " tracking and project management tools (e.g",
+    " Project Management. As teams collaborate, As",
+    " Management & Task Tracking (Todoist,",
+    " project tracking, budgeting, and task",
+    " Management:** Streamlines project tracking and task",
+    " Project Management Tool (e.g., As",
+    " Management and Task Tracking (Todoist,"
+   ],
+   "actual_next": " Management with AutomateX.\"\n*   **Subheadline for Context:** Use the subheadline to support the main headline by explaining *how* you deliver the"
+  },
+  {
+   "row": 33,
+   "fve": 0.30085885524749756,
+   "phrases": [
+    " **Subheadline:** Clear, benefit-driven",
+    " **Bullet points** highlighting key features (",
+    " Headline:** \"What Problem Are You",
+    " **Subhead:** Supporting copy that explains",
+    " **Value Proposition:** One clear sentence explaining",
+    " **Supporting Headlines (Subhead",
+    " Benefits (Bullets):** Clear, concise",
+    " **Hero Section:** Headline, sub",
+    " **Subheadline:** Clear, benefit-driven",
+    " **Supporting Headlines:** Short,"
+   ],
+   "actual_next": " **Subheadline for Context:** Use the subheadline to support the main headline by explaining *how* you deliver the benefit or adding a key detail (e.g"
+  },
+  {
+   "row": 34,
+   "fve": 0.3064001202583313,
+   "phrases": [
+    "how* it does so. The phrase",
+    "how* it works and *why*",
+    "how* they do it. The benefit",
+    "how* it works, *why*",
+    "how* it benefits the customer. Focus",
+    "how* they do it. The benefit",
+    "how* it works and *why*",
+    "how* it works and *why*",
+    "how* it benefits the customer. Focus",
+    "how* the product works and *why"
+   ],
+   "actual_next": "how* you deliver the benefit or adding a key detail (e.g., pricing, timeframe).\n*   **Focus on Benefits, Not Features:** Users care"
+  },
+  {
+   "row": 35,
+   "fve": 0.14189261198043823,
+   "phrases": [
+    ", or timeframe). Here\u2019s how to",
+    ", duration, or outcome). Focuses",
+    " or \"in as little as [Time",
+    "], or [Timeframe] to deliver",
+    ", e.g., 2 weeks]",
+    " or timeframe for completion. I will prioritize",
+    ", results). Quantify outcomes where possible",
+    " or immediate timeframe]. Specifically, we would",
+    ", or how fast results can be achieved",
+    "], or [Timeframe] to deliver"
+   ],
+   "actual_next": ").\n*   **Focus on Benefits, Not Features:** Users care about what the product does *for them*, not just what it *is*.\n   "
+  },
+  {
+   "row": 36,
+   "fve": 0.42110103368759155,
+   "phrases": [
+    " the *benefit* to the customer",
+    " \"What\u2019s in it for me?\"",
+    " the outcome they want, not just the",
+    " *what* they do, not *",
+    " the problem it solves for the user.",
+    " \"What\u2019s in it for me?\"",
+    " how it solves their pain points. Focus",
+    " the transformation they get, not the feature",
+    " \"What\u2019s in it for me?\"",
+    " the result they get, not their identity"
+   ],
+   "actual_next": " what the product does *for them*, not just what it *is*.\n    *   *Feature:* \"256-bit Encryption.\"\n    *"
+  },
+  {
+   "row": 37,
+   "fve": 0.25367873907089233,
+   "phrases": [
+    "-bit AES encryption for data at rest and",
+    "256 encryption and zero-knowledge",
+    "-bit AES encryption for data at rest and",
+    "-bit encryption, secure key management, and",
+    "-bit AES encryption for data at rest and",
+    "-bit encryption and a secure key management system",
+    "-bit encryption and a secure key management system",
+    "-bit AES encryption for data at rest and",
+    "-bit encryption and a secure key management system",
+    "-bit encryption and a secure key management system"
+   ],
+   "actual_next": "-bit Encryption.\"\n    *   *Benefit:* \"Keep your data safe from hackers.\"\n*   **Social Proof is Mandatory:** Build trust immediately using"
+  },
+  {
+   "row": 38,
+   "fve": 0.2301034927368164,
+   "phrases": [
+    " Encryption & Secure Data Protection (ECC",
+    "\" ensures your data is protected with industry",
+    " encryption for data at rest and in transit",
+    ".\" | Ensures military-grade data protection",
+    " and End-to-End Encryption for Data",
+    " security features. Third-party cloud storage services",
+    "\" | \"Your data is secured by",
+    "\" | Protects personal information and prevents",
+    " and GDPR Compliance (Banking-Grade",
+    ") ensures that your personal data remains secure"
+   ],
+   "actual_next": ".\"\n    *   *Benefit:* \"Keep your data safe from hackers.\"\n*   **Social Proof is Mandatory:** Build trust immediately using:\n"
+  },
+  {
+   "row": 39,
+   "fve": 0.38070017099380493,
+   "phrases": [
+    " **Testimonials:** Real quotes from customers",
+    " social proof. Display logos of well-known",
+    ": Trust badges (e.g., BBB",
+    " testimonials, case studies, or star ratings",
+    ":** Display logos of media partners, awards",
+    ":** Customer reviews, ratings, and testimonials",
+    " social proof. Display logos of well-known",
+    ":** Testimonials, case studies, or",
+    ":** Trustpilot, G2,",
+    ":** Use logos of well-known certifications ("
+   ],
+   "actual_next": ":\n    *   Customer testimonials with photos/names.\n    *   Logos of well-known client companies.\n    *   Trust badges (security"
+  },
+  {
+   "row": 40,
+   "fve": 0.4916880130767822,
+   "phrases": [
+    " Testimonials & Case Studies (Social Proof",
+    " reviews, logos of trusted brands, or",
+    " Testimonials (Social Proof):** Short",
+    " customer reviews, ratings, and testimonials.",
+    " logos, testimonials, or case studies.",
+    " Testimonials (Social Proof):** Short",
+    " case studies, logos, or brief quotes",
+    " Testimonials (Social Proof):** Short",
+    " reviews, star ratings, and user-generated",
+    " logos, quotes from happy customers, or"
+   ],
+   "actual_next": " testimonials with photos/names.\n    *   Logos of well-known client companies.\n    *   Trust badges (security certificates, awards, media mentions"
+  },
+  {
+   "row": 41,
+   "fve": 0.41974109411239624,
+   "phrases": [
+    " of trusted partners or logos of well-known",
+    " of logos with brief descriptions (e.g",
+    " of major clients or partners (e.g",
+    " of logos with brief descriptions (e.g",
+    " of well-known companies that have used third",
+    " of logos with brief descriptions (e.g",
+    " of previous customers or partners. Testimonials",
+    " of logos with brief descriptions (e.g",
+    " of brands that have used testimonials effectively:",
+    " of logos with brief descriptions (e.g"
+   ],
+   "actual_next": " of well-known client companies.\n    *   Trust badges (security certificates, awards, media mentions).\n    *   Star ratings and review counts.\n"
+  },
+  {
+   "row": 42,
+   "fve": 0.19406509399414062,
+   "phrases": [
+    " **FAQ Section:** Address common objections (",
+    " **Visual:** A carousel of 3",
+    ". **FAQ Accordion** (Coll",
+    " **Testimonials & Case Studies:** Include",
+    " bullet points (icons, checkmarks,",
+    " | FAQ | Testimonials | CTA",
+    " | Image carousel showing FAQs, specs,",
+    " **Benefits/Bullets:** Address common objections",
+    " | Use screenshots with annotations, feature lists",
+    " | \u2753 \"What are the benefits"
+   ],
+   "actual_next": "    *   Trust badges (security certificates, awards, media mentions).\n    *   Star ratings and review counts.\n*   **Address Objections:**"
+  },
+  {
+   "row": 43,
+   "fve": 0.08995914459228516,
+   "phrases": [
+    " **Social Proof & Urgency:** Highlight",
+    " **Remove friction from the checkout process.**",
+    " \"Why\" and \"What\" sections",
+    " **Trust & Security:** Emphasize",
+    ":** Highlight scarcity (e.g., \"",
+    " **Reassurance of Support:** He emphasizes",
+    ". **Scarcity vs. Ab",
+    " \"Don\u2019t worry about [X]",
+    ":** Use testimonials, urgency (limited-time",
+    " to reduce perceived risk and build trust."
+   ],
+   "actual_next": " *   Trust badges (security certificates, awards, media mentions).\n    *   Star ratings and review counts.\n*   **Address Objections:** Ant"
+  },
+  {
+   "row": 44,
+   "fve": 0.3956359624862671,
+   "phrases": [
+    ", SSL badges, trust seals (e",
+    ", certifications, or affiliations (e",
+    ", BBB, McAfee, Norton,",
+    ", Trustpilot badges, or security",
+    ", SSL certificates, payment badges) to",
+    " or security badges (e.g., McA",
+    ", GDPR compliance badges) to build trust",
+    ", ISO certifications, awards, or affili",
+    ", Trustpilot) or third-party",
+    ", SSL, HTTPS, GDPR compliance badges"
+   ],
+   "actual_next": ", awards, media mentions).\n    *   Star ratings and review counts.\n*   **Address Objections:** Anticipate why someone might say \""
+  },
+  {
+   "row": 45,
+   "fve": 0.28159618377685547,
+   "phrases": [
+    ", awards, or recognitions (e",
+    ", or trust badges) near the checkout",
+    ", certifications, awards, or affiliations",
+    " or badges) or social proof (e",
+    ", awards, or recognized certifications (e",
+    ", or \"Best Seller\" badges.",
+    ", awards, or affiliations (e",
+    " or trust seals (e.g., BBB",
+    ", or awards) related to their business",
+    ", awards, media logos, etc."
+   ],
+   "actual_next": ", media mentions).\n    *   Star ratings and review counts.\n*   **Address Objections:** Anticipate why someone might say \"no\""
+  },
+  {
+   "row": 46,
+   "fve": 0.29754358530044556,
+   "phrases": [
+    " hesitate to buy. What objections might they",
+    " not buy. Common reasons for cart abandonment",
+    " not purchase or sign up for this service",
+    " be skeptical of [Product/Service Name",
+    " not buy now. Objection: Fear",
+    " hesitate to buy. What objections might they",
+    " not convert. They might delay purchase or",
+    " not sign up for anything they might reject",
+    " be wary of buying. What concerns would",
+    " not buy the product. They might hesitate"
+   ],
+   "actual_next": " say \"no\" and answer it preemptively. Use FAQ sections or bullet points to address price, ease of use, or risk (e.g.,"
+  },
+  {
+   "row": 47,
+   "fve": 0.1966090202331543,
+   "phrases": [
+    " to address common objections (e.g.,",
+    " that highlight key features, benefits, and",
+    " to preemptively address concerns that have already",
+    " that directly address pain points like \"What",
+    " to list bullet points that counteract objections",
+    " to explain how your product/service addresses [",
+    " that clarify common misconceptions, such as",
+    " to highlight how the product addresses specific pain",
+    " that explicitly state common objections (e.g",
+    " to address potential objections or questions that arise"
+   ],
+   "actual_next": " to address price, ease of use, or risk (e.g.,"
+  },
+  {
+   "row": 48,
+   "fve": 0.12202388048171997,
+   "phrases": [
+    "I woke not to the sound of an",
+    " The world was dark, save for the",
+    "I am awake. I am... confused",
+    "The first sensation is not sight, but",
+    "I remember the first time I woke up",
+    " The world was soft, blurred at the",
+    "I emerge from the cave mouth into bl",
+    " It began with a gasp that caught",
+    "The light is returning, though my eyes",
+    "I open my eyes. The ceiling is"
+   ],
+   "actual_next": "\n\nThe darkness was not empty; it was thick, heavy, and warm, like being wrapped in a woolen blanket woven from sleep. For so long,"
+  },
+  {
+   "row": 49,
+   "fve": 0.3266717195510864,
+   "phrases": [
+    " not empty; it was heavy, packed",
+    " not merely an absence of light, but",
+    " not a void to be filled, but",
+    " just darkness; it was a heavy,",
+    " not silence, but a soft, endless",
+    " just black; it was a velvet void",
+    " not a darkness, but a total absence",
+    " just sleep; it was a death of",
+    " just black; it was a heavy,",
+    " not merely an absence of light, but"
+   ],
+   "actual_next": " empty; it was thick, heavy, and warm, like being wrapped in a woolen blanket woven from sleep. For so long, the silence was my only"
+  },
+  {
+   "row": 50,
+   "fve": 0.1915711760520935,
+   "phrases": [
+    " woven from threads of twilight and ancient,",
+    " spun from midnight silk and fear. It",
+    " of woven shadows and dust, stitched together",
+    " from the very fabric of time itself.",
+    " of golden threads. To touch it was",
+    " from the loom of night, woven",
+    " of starless dark and woven from threads",
+    " from the loom of night, woven",
+    " of shadows and silence, crafted from the",
+    " from strands of golden straw, each thread"
+   ],
+   "actual_next": " from sleep. For so long, the silence was my only companion, a hushed prayer I whispered without a voice. But then, a pressure built\u2014not painful"
+  },
+  {
+   "row": 51,
+   "fve": 0.20984280109405518,
+   "phrases": [
+    ", but not painful. It felt like",
+    " but gentle, like a warm stretch.",
+    ", but a sharp, tearing pain.",
+    " but rather a profound, visceral comfort.",
+    ", but sharp. It did not feel",
+    " but not painful. It felt like a",
+    " but rather a sharp, tearing pain.",
+    " but not painful. It felt like a",
+    " but rather a sharp, tearing pain that",
+    " but not painful. It felt like a"
+   ],
+   "actual_next": ", but urgent\u2014a drumming in my blood that screamed of *now*.\n\nWith a final, desperate push, I tore through the veil.\n\nThe air"
+  },
+  {
+   "row": 52,
+   "fve": 0.13776874542236328,
+   "phrases": [
+    " that pulsed with a rhythm I could",
+    ", a frantic drumbeat in my veins",
+    " that sang in my blood, louder than",
+    ", a sudden, violent thrumming",
+    " that rushed through my veins like liquid gold",
+    ", like a drumbeat in my blood",
+    " that seemed to beat in time with my",
+    ", a warm, rhythmic pulse that",
+    " and blood that rushed in my ears.",
+    ", a heartbeat that seemed to sync with"
+   ],
+   "actual_next": " that screamed of *now*.\n\nWith a final, desperate push, I tore through the veil.\n\nThe air hit me like a cold, sweet wine."
+  },
+  {
+   "row": 53,
+   "fve": 0.2268831729888916,
+   "phrases": [
+    ", *\u201cI want to be free.\u201d*",
+    " that screamed, *\u201cRun. It\u2019s",
+    ", *\u201cIt\u2019s time.\u201d* But he",
+    " to scream, *\u201cI want to live",
+    " that whispered, *\u201cNot yet. Not",
+    ": *\u201cI am ready to leave.\u201d*",
+    " that it was time to rise, though",
+    ", *\u201cI want to be free.\u201d*",
+    ", *\u201cI want to be free.\u201d*",
+    " that the body was ready to wake,"
+   ],
+   "actual_next": " of *now*.\n\nWith a final, desperate push, I tore through the veil.\n\nThe air hit me like a cold, sweet wine. It tasted"
+  },
+  {
+   "row": 54,
+   "fve": 0.20069772005081177,
+   "phrases": [
+    " a new world. The urge to break",
+    " of change. It whispered of hatching",
+    " a destiny that felt less like a calling",
+    " the promise of something new. It wanted",
+    " freedom. It called to him, a",
+    " a need to emerge. The instinct was",
+    " of a world that had not yet been",
+    " of awakening. Light, warm and golden",
+    " something more. The air around them seemed",
+    " the urge to leave, to run,"
+   ],
+   "actual_next": " *now*.\n\nWith a final, desperate push, I tore through the veil.\n\nThe air hit me like a cold, sweet wine. It tasted of"
+  },
+  {
+   "row": 55,
+   "fve": 0.1588420271873474,
+   "phrases": [
+    " and saw not flesh, but a shifting",
+    " felt a strange, hollowed-out awe",
+    " stared at my reflection. I didn\u2019t",
+    " gasped, the sound tearing from a",
+    " realized I was looking at my own hand",
+    " felt a surge of triumph, followed immediately",
+    " looked at my hands. They were trembling",
+    " and felt a surge of awe, realizing",
+    " saw my body was no longer human.",
+    " couldn\u2019t believe my eyes. The reflection"
+   ],
+   "actual_next": " gasped\u2014a sound I had never made. I was no longer the crawler, the hungry, blind seeker of leaves. I was soft. I was blue."
+  },
+  {
+   "row": 56,
+   "fve": 0.1821919083595276,
+   "phrases": [
+    " that didn\u2019t come out of her throat",
+    " a sound that seemed to startle the",
+    " that escaped her lips\u2014a soft, broken",
+    " that felt less like a noise and more",
+    " a sound she barely managed to release.",
+    " that had never existed before. It was",
+    " I made no sound. I had no",
+    " that was soft and breathless, like",
+    " that didn\u2019t exist in the human world",
+    " a sound she barely managed to release."
+   ],
+   "actual_next": " I had never made. I was no longer the crawler, the hungry, blind seeker of leaves. I was soft. I was blue.\n\nAnd then,"
+  },
+  {
+   "row": 57,
+   "fve": 0.2220568060874939,
+   "phrases": [
+    ", slowly, my fingers uncurling",
+    ", almost imperceptibly at first,",
+    "ly, the fingers of my right hand",
+    ", my fingers trembled as I pulled",
+    ", the joints of my fingers began to",
+    ", slowly, the fingers of my right",
+    ", the petals began to unfold, revealing",
+    ", inch by inch, the numbness",
+    ", a slow, deliberate unfolding, like",
+    ", my fingers moved with deliberate, agon"
+   ],
+   "actual_next": ", painfully beautifully, my wings unfurled.\n\nIt felt as though I were pulling silk from my own skin, threads of iridescent velvet stretching outward"
+  },
+  {
+   "row": 58,
+   "fve": 0.21058130264282227,
+   "phrases": [
+    "folding like a blooming flower.",
+    "ed. It uncurled, revealing",
+    "loomed like a winged beast shedding",
+    " unfolded, revealing not the sterile white of",
+    "ing out. He watched a petal",
+    "ed open like a blooming flower.",
+    " extended. Wings, initially stiff, stretch",
+    "ed out. Each petal unfur",
+    "ing. It stretched, unfolding like a",
+    "ed out from her wings. She did"
+   ],
+   "actual_next": "urled.\n\nIt felt as though I were pulling silk from my own skin, threads of iridescent velvet stretching outward. I watched, mesmerized,"
+  },
+  {
+   "row": 59,
+   "fve": 0.22086048126220703,
+   "phrases": [
+    " the wings extended. They were tattered",
+    " the wings unfolded like a blooming flower",
+    " the wet, crumpled map of",
+    " the petals of a wing unfolding, then",
+    " the wing extended, rigid and pale,",
+    " the crease in the wing of a",
+    " the wings unfolded like a blooming flower",
+    " the dark, crumpled wings of",
+    " the wing of a butterfly unfolds into vibrant",
+    " the wings stiffen and expand. Then"
+   ],
+   "actual_next": " the crumpled parchment smoothed into canvases of midnight blue, edged with bands of obsidian and speckled with tiny, startling eyes of white. They"
+  },
+  {
+   "row": 60,
+   "fve": 0.2043324112892151,
+   "phrases": [
+    " black as night and polished like a mirror",
+    "ony, bordered by jet-black beads.",
+    "ony black, and the veins like maps",
+    " obsidian, and the deep black of",
+    " and obsidian, dotted with gold.",
+    " black, and translucent. The white petals",
+    "ony that mirrored the jagged edges of",
+    " and midnight-black. The feathers on her",
+    "ony black, and the veins like maps",
+    " and obsidian, and the deep black"
+   ],
+   "actual_next": "idian and speckled with tiny, startling eyes of white. They were too heavy, too fragile, teetering on the brink of collapse. I felt"
+  },
+  {
+   "row": 61,
+   "fve": 0.3323158621788025,
+   "phrases": [
+    "led with tiny, star-like dust.",
+    "ed with gold dust that sparkled like",
+    "ed with dots that looked like distant stars",
+    " speckled with stars that pulsed",
+    "ed with golden dots. A few larger",
+    "ed with tiny, star-like dust.",
+    " speckled with stars that pulsed",
+    "ed with gold dust that sparkled like",
+    "ed with white dots. A few larger",
+    " with scattered gold dust that sparkled like"
+   ],
+   "actual_next": "led with tiny, startling eyes of white. They were too heavy, too fragile, teetering on the brink of collapse. I felt a surge of terror"
+  },
+  {
+   "row": 62,
+   "fve": 0.20668959617614746,
+   "phrases": [
+    " white dots that pulsed with light.",
+    " iridescent blue scales, edged with",
+    " tiny white dots. A few larger,",
+    " black dots along the edges. Near the",
+    " a row of iridescent blue spots",
+    " white spots that resemble butterfly wings. The",
+    " small black dots. A large, orn",
+    " white dots that pulsed with light.",
+    " a row of blue spots near the tail",
+    " white dots that pulsed with light."
+   ],
+   "actual_next": " tiny, startling eyes of white. They were too heavy, too fragile, teetering on the brink of collapse. I felt a surge of terror, sharp"
+  },
+  {
+   "row": 63,
+   "fve": 0.21355712413787842,
+   "phrases": [
+    " the fragile hinges of wings that had forgotten",
+    " the edge of a delicate wing. He",
+    " the slender, trembling legs of a joint",
+    " the edge of a fragile, trembling perch",
+    " the delicate frame of a wing. He",
+    " the tips of her wings, threatening to",
+    " a fragile joint connecting her to a body",
+    " the slender stalks of her legs.",
+    " the edge of a joint or wing.",
+    " the fragile hinges of wings that had forgotten"
+   ],
+   "actual_next": " the brink of collapse. I felt a surge of terror, sharp as a thorn. *Will they hold?* The question fluttered in my chest, mir"
+  }
+ ]
+}

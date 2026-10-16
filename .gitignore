@@ -22,5 +22,12 @@ dist/
 .vscode/
 
 # run outputs
-runs/
+# Pilot outputs pulled off the pod: big binaries ignored, eval JSONs / logs / rl_log committed
+runs/**/*.safetensors
+runs/**/*.npy
+runs/**/*.pt
+runs/**/dictionary/
+runs/**/whitening/
 *.log
+runs/**/corpus/
+runs/**/teacher/
