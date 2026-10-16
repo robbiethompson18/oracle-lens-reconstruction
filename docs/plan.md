@@ -253,3 +253,28 @@ Adapters (public): https://huggingface.co/collections/robbiethompson2018/nn-mats
 
 Next for a full run: scale dictionary/reconstructor data 10× before scaling RL; step-numbered RL saves
 (done); a pod image with nvcc so fla/causal-conv1d kernels build; vLLM rollouts; then WorkspaceBench.
+
+## Qwen3.8-27B pilot (2026-10-16, 1×H100, same config as the 3.6 pilot)
+
+| held-out greedy FVE, N=8, K=10, 256 rows | Qwen3.6 | Qwen3.8 |
+|---|---|---|
+| random phrases | 0.0011 | 0.0015 |
+| reconstructor held-out cos | 0.32 | 0.32 |
+| OMP teacher, len-8 dict | 0.118 | 0.115 |
+| oracle after SFT | 0.058 | 0.050 |
+| oracle after RL (40 steps) | 0.236 | 0.186 |
+
+Everything upstream of RL is identical within noise; the 3.8 RL eval was still rising at step 40 (0.183 at
+25, 0.189 at 40) where 3.6 had plateaued. Single seed, ±0.03 eval noise: not a meaningful gap yet.
+Adapters: `robbiethompson2018/oracle-lens-qwen3.8-27b-pilot{,-sft}`, `oracle-lens-reconstructor-qwen3.8-27b-pilot`.
+
+## Gemma 4 31B-it pilot (2026-10-16, 1×H200, `configs/gemma4_pilot.yaml`, lens = block 40 of 60)
+
+Raw-injection run: reconstructor cos 0.35, teacher len-8 FVE 0.128 (both a bit above Qwen), but oracle
+SFT 0.015 / RL 0.028 (random 0.002). Diagnosis (`src/olens/diag_injection.py`): the SFT oracle's NLL on
+teacher phrases drops only 0.085 nats/token with the correct vs a shuffled activation. Cause: Gemma's
+L40 residual keeps 76% of its squared norm in one constant dimension (2041); raw unit vectors have mean
+pairwise cosine 0.80, centred ones ~0, so raw injection hands the oracle nearly the same vector every
+time. Qwen's massive dim (3994) is ~59% of the norm, which raw injection evidently tolerates.
+Fix: `oracle.inject_space: centred` (subtract the whitening-stage mean before normalising); rerun of
+SFT→RL→eval in `ckpt_oracle_{sft,rl}_centred`.
