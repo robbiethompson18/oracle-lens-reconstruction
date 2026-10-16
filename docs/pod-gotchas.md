@@ -18,3 +18,10 @@ Read before launching or debugging a pod run.
 - **Shipping code**: `sky/ship.sh` (tar over ssh). SkyPilot workdir uploads fail through the local
   API server.
 - **Logs**: `/work/pilot/logs/<stage>.log` on the pod; `run_pilot.log` is the stage runner.
+- **Setup log path**: `sky launch --detach-run` returns before setup finishes; the setup log is
+  `~/sky_logs/<job-id>-<task>/tasks/setup.log` on the pod (not `~/sky_logs/*/setup-*.log`). It ends
+  with `SETUP_DONE`. A waiter on the wrong glob idled a pod for 8 h ($32) on 2026-10-16.
+- **Runner output**: `run_pilot.sh` prints stage headers to stdout; when started in tmux, mirror
+  the pane with `tmux pipe-pane -t <session> -o "cat >> $ROOT/logs/run_pilot.log"`.
+- **Qwen3.8-27B**: same `qwen3_5` architecture, same marker/`<|im_end|>` ids, same chat-template
+  thinking switch; `configs/qwen38_pilot.yaml` differs from `pilot.yaml` only in model name and root.
