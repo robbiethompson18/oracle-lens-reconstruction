@@ -106,18 +106,24 @@ class EarlyExit:
 
     def __init__(self, model, layer):
         self.acts = None
+        self.active = False  # the hook stays registered; only forwards inside run() exit early
         self._h = text_model(model).layers[layer].register_forward_hook(self._hook)
 
     def _hook(self, module, args, output):
+        if not self.active:
+            return  # an oracle generate() on the shared base must run all 64 blocks
         self.acts = _out_tensor(output)
         raise StopForward
 
     def run(self, model, **kwargs):
         self.acts = None
+        self.active = True
         try:
             model(**kwargs, use_cache=False)
         except StopForward:
             pass
+        finally:
+            self.active = False
         return self.acts
 
     def remove(self):
