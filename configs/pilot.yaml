@@ -75,10 +75,12 @@ oracle:
     cosine: true
     save_every: 500
   rl:
-    steps: 50
-    prompts_per_step: 16
+    # Pilot-sized: HF generate on the slow Gated-DeltaNet conv fallback (~0.3 s/token at batch 16-32)
+    # makes rollouts the bottleneck, so 8x8 = 64 rollouts/step and no 32-token phrases (eval is N=8).
+    steps: 40
+    prompts_per_step: 8
     group_size: 8
-    lengths: [2, 4, 8, 16, 32]
+    lengths: [2, 4, 8, 16]
     k_max: 16
     temperature: 1.0
     max_new_tokens_slack: 16

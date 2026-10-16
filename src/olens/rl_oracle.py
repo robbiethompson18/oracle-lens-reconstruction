@@ -47,29 +47,37 @@ def left_pad(rows, pad_id):
 
 
 @torch.inference_mode()
-def rollout(model, tok, inj, prompts, acts, temperature, max_new, n_samples):
-    """prompts: list of (N, K, ids, pos). Returns list of generated id lists (n_samples per prompt)."""
+def rollout(model, tok, inj, prompts, acts, temperature, max_new, n_samples, batch=32):
+    """prompts: list of (N, K, ids, pos). Returns list of generated id lists (n_samples per prompt).
+
+    Generation is chunked to `batch` sequences: each of the 48 Gated-DeltaNet layers keeps an fp32
+    recurrent state per sequence, so 128 sequences at once OOMed an 80 GB H100 next to the 54 GB base.
+    """
     model.set_adapter("oracle")
     model.eval()
     rows = [p[2] for p in prompts for _ in range(n_samples)]
-    ids, mask, offs = left_pad(rows, tok.pad_token_id)
-    pos = torch.tensor([p[3] + offs[i * n_samples + j] for i, p in enumerate(prompts) for j in range(n_samples)])
-    vec = acts.repeat_interleave(n_samples, dim=0)
-    inj.set(pos, vec)
-    out = model.generate(
-        input_ids=ids.to(model.device),
-        attention_mask=mask.to(model.device),
-        do_sample=temperature > 0,
-        temperature=temperature if temperature > 0 else None,
-        top_p=1.0,
-        max_new_tokens=max_new,
-        pad_token_id=tok.pad_token_id,
-        use_cache=True,
-    )
-    inj.clear()
+    all_pos = [p[3] for p in prompts for _ in range(n_samples)]
+    all_vec = acts.repeat_interleave(n_samples, dim=0)
+    gens = []
+    for s in range(0, len(rows), batch):
+        ids, mask, offs = left_pad(rows[s : s + batch], tok.pad_token_id)
+        pos = torch.tensor([all_pos[s + k] + offs[k] for k in range(len(offs))])
+        inj.set(pos, all_vec[s : s + batch])
+        out = model.generate(
+            input_ids=ids.to(model.device),
+            attention_mask=mask.to(model.device),
+            do_sample=temperature > 0,
+            temperature=temperature if temperature > 0 else None,
+            top_p=1.0,
+            max_new_tokens=max_new,
+            pad_token_id=tok.pad_token_id,
+            use_cache=True,
+        )
+        inj.clear()
+        gens.extend(out[:, ids.shape[1] :].cpu().tolist())
+        del out
     model.train()
-    gen = out[:, ids.shape[1] :].cpu().tolist()
-    return [g for g in gen]
+    return gens
 
 
 def score(recon, tok, gens, zs, Ns, Ks, pen_phrase, pen_token, device, batch=128):
