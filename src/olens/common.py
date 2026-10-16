@@ -161,9 +161,10 @@ class EarlyExit:
         self._h.remove()
 
 
-# All Linear modules of the text decoder (attention, Gated-DeltaNet projections, MLP). The vision tower
-# uses different names (qkv, proj, linear_fc1/2) so this list never touches it.
-LORA_TARGETS = [
+# All Linear modules of the text decoder (attention, Gated-DeltaNet projections, MLP). Qwen's vision tower
+# uses different names (qkv, proj, linear_fc1/2); Gemma 4 loads as the full multimodal wrapper and its SigLIP
+# tower reuses q/k/v/out_proj, so the regex below excludes vision/audio towers explicitly.
+LORA_TARGET_NAMES = [
     "q_proj",
     "k_proj",
     "v_proj",
@@ -177,6 +178,7 @@ LORA_TARGETS = [
     "up_proj",
     "down_proj",
 ]
+LORA_TARGETS = r"^(?!.*(vision_tower|audio_tower|embed_vision|embed_audio)).*\.layers\.\d+\.[a-z_]+\.(" + "|".join(LORA_TARGET_NAMES) + ")$"
 
 
 def lora_config(r, alpha, dropout=0.0):
