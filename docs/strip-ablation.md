@@ -24,6 +24,9 @@ Setup (`sky/run_strip_ablation.sh`, 2×H100, 2026-10-21):
 
 ## Results (2026-10-21): null
 
+Follow-up: with WildChat RL data the strip leg does drift to Chinese, even on English inputs; see
+[zh-probe.md](zh-probe.md).
+
 Stripping hurts reward but RL does not move toward Chinese.
 
 |                                                          | strip     | control   |

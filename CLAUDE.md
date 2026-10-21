@@ -48,3 +48,4 @@ Current docs:
 - [WorkspaceBench — families, scoring, plug-in interface, their oracle lens checkpoint](docs/research/workspacebench.md)
 - [Compute — Qwen3.6-27B facts, memory/throughput, RunPod prices, software stack](docs/research/compute.md)
 - [Strip ablation — read before asking why an oracle lens emits Chinese](docs/strip-ablation.md) — does stripping bullets' leading whitespace before the reconstructor make RL drift to CJK
+- [Chinese-input probe — read before asking why an oracle lens emits Chinese](docs/zh-probe.md) — lenses on Chinese activations; WildChat RL + stripping makes the lens write Chinese about English text
