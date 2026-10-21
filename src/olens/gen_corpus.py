@@ -19,8 +19,11 @@ def load_prompts(cfg, tok):
 
     ccfg = cfg["corpus"]
     ds = load_dataset(ccfg["prompt_dataset"], split=ccfg["prompt_split"], streaming=True)
+    lang = ccfg.get("language")  # WildChat's per-conversation `language` label, e.g. "Chinese"; None = keep all
     seen, out = set(), []
     for row in ds:
+        if row.get("toxic") or (lang and row.get("language") != lang):
+            continue
         msgs = row.get("messages") or row.get("conversation") or []
         if not msgs:
             continue
