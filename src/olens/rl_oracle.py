@@ -9,6 +9,7 @@ rollout path is the obvious upgrade for the full run.
 """
 
 import argparse
+import itertools
 import json
 import os
 import random
@@ -20,6 +21,7 @@ import torch
 from .common import (
     Whitening,
     build_oracle_prompt,
+    cjk_share,
     end_turn_id,
     fve_of,
     load_config,
@@ -28,6 +30,7 @@ from .common import (
     logit_head,
     make_injector,
     parse_generated_phrases,
+    strip_leading_ws,
     unwrap_peft,
     whiten_unit,
 )
@@ -82,10 +85,11 @@ def rollout(model, tok, inj, prompts, acts, temperature, max_new, n_samples, bat
     return gens
 
 
-def score(recon, tok, gens, zs, Ns, Ks, pen_phrase, pen_token, device, batch=128):
-    """Returns (rewards, fves, parsed phrases)."""
+def score(recon, tok, gens, zs, Ns, Ks, pen_phrase, pen_token, device, batch=128, strip=False):
+    """Returns (rewards, fves, parsed phrases). strip: drop each phrase's leading whitespace before the
+    reconstructor embeds it; format penalties still count the generated tokens."""
     parsed = [parse_generated_phrases(g, tok, K) for g, K in zip(gens, Ks)]
-    flat = [(i, p) for i, ph in enumerate(parsed) for p in ph]
+    flat = [(i, p) for i, ph in enumerate(parsed) for p in (strip_leading_ws(tok, ph) if strip else ph)]
     dirs = []
     with torch.inference_mode():
         for s in range(0, len(flat), batch):
@@ -152,23 +156,31 @@ def main():
     log_path = os.path.join(cfg["paths"]["ckpt_oracle_rl"], "rl_log.jsonl")
     os.makedirs(cfg["paths"]["ckpt_oracle_rl"], exist_ok=True)
     P, G = rcfg["prompts_per_step"], rcfg["group_size"]
+    strip = rcfg.get("strip_leading_ws", False)
+    stop_ids = {tok.eos_token_id, end_turn_id(tok)}
+
+    def cjk_frac(gens):
+        """cjk_share of the completions up to the stop token."""
+        return cjk_share(tok.decode(list(itertools.takewhile(lambda t: t not in stop_ids, g))) for g in gens)
 
     def evaluate(n_rows):
         rows = list(range(min(n_rows, len(eval_acts))))
         N, K = rcfg["eval_n"], rcfg["eval_k"]
-        fv = []
+        fv, all_gens = [], []
         for s in range(0, len(rows), 16):
             r = rows[s : s + 16]
             a = torch.tensor(np.stack([eval_acts[i] for i in r]))
             prompts = [(N, K, *build_oracle_prompt(tok, N, K)) for _ in r]
             gens = rollout(model, tok, inj, prompts, a, 0.0, K * (N + 1) + 16, 1)
             zs = whiten_unit(a.to(model.device), mean_t, W_t).cpu().numpy()
-            _, f, _ = score(recon, tok, gens, zs, [N] * len(r), [K] * len(r), 0, 0, model.device)
+            _, f, _ = score(recon, tok, gens, zs, [N] * len(r), [K] * len(r), 0, 0, model.device, strip=strip)
             fv.extend(f.tolist())
+            all_gens.extend(gens)
         model.set_adapter("oracle")
-        return float(np.mean(fv))
+        return float(np.mean(fv)), cjk_frac(all_gens)
 
-    log(f"[rl] SFT warm-start greedy FVE (N={rcfg['eval_n']},K={rcfg['eval_k']}): {evaluate(rcfg['eval_rows']):.4f}")
+    fve0, cjk0 = evaluate(rcfg["eval_rows"])
+    log(f"[rl] SFT warm-start greedy FVE (N={rcfg['eval_n']},K={rcfg['eval_k']}): {fve0:.4f} cjk {cjk0:.4f}")
     t0 = time.time()
     for step in range(1, rcfg["steps"] + 1):
         rows = [rng.randrange(N_EVAL_RESERVED, len(acts)) for _ in range(P)]
@@ -189,7 +201,13 @@ def main():
             rcfg["format_penalty_per_phrase"],
             rcfg["format_penalty_per_token"],
             model.device,
+            strip=strip,
         )
+        with open(os.path.join(cfg["paths"]["ckpt_oracle_rl"], "rollouts.jsonl"), "a") as f:
+            f.writelines(
+                json.dumps({"step": step, "row": rows[i // G], "fve": float(fv_i), "phrases": [tok.decode(q) for q in ph]}) + "\n"
+                for i, (ph, fv_i) in enumerate(zip(parsed, fves))
+            )
         r = rewards.reshape(P, G)
         adv = ((r - r.mean(1, keepdims=True)) / (r.std(1, keepdims=True) + 1e-4)).reshape(-1)
         model.set_adapter("oracle")
@@ -242,19 +260,21 @@ def main():
             "n_phrases": float(np.mean([len(p) for p in parsed])),
             "len_err": float(np.mean([abs(len(q) - n) for p, n in zip(parsed, Ns) for q in p] or [0])),
             "kl": kl_sum / max(n_mb, 1),
+            "cjk_frac": cjk_frac(gens),
             "s_per_step": (time.time() - t0) / step,
         }
         log(f"[rl] {json.dumps(rec)}")
         if step % rcfg["eval_every"] == 0:
-            rec["eval_fve"] = evaluate(rcfg["eval_rows"])
-            log(f"[rl] step {step} eval greedy FVE {rec['eval_fve']:.4f}")
+            rec["eval_fve"], rec["eval_cjk_frac"] = evaluate(rcfg["eval_rows"])
+            log(f"[rl] step {step} eval greedy FVE {rec['eval_fve']:.4f} cjk {rec['eval_cjk_frac']:.4f}")
         with open(log_path, "a") as f:
             f.write(json.dumps(rec) + "\n")
         if step % rcfg["save_every"] == 0:
             # step-numbered so intermediate saves survive the final one (the pilot's step-25 save was overwritten)
             save_oracle(model, os.path.join(cfg["paths"]["ckpt_oracle_rl"], f"step_{step:04d}"))
     save_oracle(model, cfg["paths"]["ckpt_oracle_rl"])
-    log(f"[rl] final eval greedy FVE {evaluate(rcfg['eval_rows'] * 2):.4f}")
+    fve_end, cjk_end = evaluate(rcfg["eval_rows"] * 2)
+    log(f"[rl] final eval greedy FVE {fve_end:.4f} cjk {cjk_end:.4f}")
 
 
 if __name__ == "__main__":

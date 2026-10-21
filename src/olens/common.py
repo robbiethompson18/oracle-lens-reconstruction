@@ -372,6 +372,24 @@ def parse_generated_phrases(gen_ids, tok, k):
     return phrases[:k]
 
 
+def strip_leading_ws(tok, phrases):
+    """Re-tokenise each phrase without its leading whitespace, as WorkspaceBench feeds bullet text to its AR
+    (text after "- ", no leading space). Whitespace-only phrases are kept as is."""
+    out = []
+    for p in phrases:
+        text = tok.decode(p)
+        out.append(tok(text.lstrip(), add_special_tokens=False)["input_ids"] if text[:1].isspace() and text.strip() else p)
+    return out
+
+
+def cjk_share(texts):
+    """CJK ideographs / (ideographs + Latin letters), on decoded text. Counting per token instead overcounts:
+    byte-level tokens of box-drawing characters and emoji decode to U+FFFD on their own, like split CJK."""
+    s = "".join(texts)
+    ideo = len(re.findall(r"[\u3400-\u9fff]", s))
+    return ideo / max(ideo + len(re.findall(r"[A-Za-z]", s)), 1)
+
+
 # ---------------------------------------------------------------- NNLS / FVE
 
 
