@@ -48,7 +48,8 @@ def main():
         prompts = [(N, K, *build_oracle_prompt(tok, N, K)) for _ in r]
         gens = rollout(model, tok, inj, prompts, a, args.temperature, K * (N + 1) + 16, 1)
         zs = whiten_unit(a.to(model.device), mean_t, W_t).cpu().numpy()
-        _, f, parsed = score(recon, tok, gens, zs, [N] * len(r), [K] * len(r), 0, 0, model.device)
+        strip = cfg["oracle"]["rl"].get("strip_leading_ws", False)
+        _, f, parsed = score(recon, tok, gens, zs, [N] * len(r), [K] * len(r), 0, 0, model.device, strip=strip)
         fv.extend(f.tolist())
         # random-phrase baseline: K random dictionary phrases of length N through the same scorer
         rand = [[dict_phrases[rng.randrange(len(dict_phrases))] for _ in range(K)] for _ in r]

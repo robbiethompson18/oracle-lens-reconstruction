@@ -47,3 +47,4 @@ Current docs:
 - [ceselder GitHub survey — timeline of her lenses, olens recipe, compute, dependency pain](docs/research/ceselder-github-survey.md)
 - [WorkspaceBench — families, scoring, plug-in interface, their oracle lens checkpoint](docs/research/workspacebench.md)
 - [Compute — Qwen3.6-27B facts, memory/throughput, RunPod prices, software stack](docs/research/compute.md)
+- [Strip ablation — read before asking why an oracle lens emits Chinese](docs/strip-ablation.md) — does stripping bullets' leading whitespace before the reconstructor make RL drift to CJK
