@@ -21,7 +21,7 @@ import torch
 from .common import (
     Whitening,
     build_oracle_prompt,
-    cjk_token_ids,
+    cjk_share,
     end_turn_id,
     fve_of,
     load_config,
@@ -157,13 +157,11 @@ def main():
     os.makedirs(cfg["paths"]["ckpt_oracle_rl"], exist_ok=True)
     P, G = rcfg["prompts_per_step"], rcfg["group_size"]
     strip = rcfg.get("strip_leading_ws", False)
-    cjk_ids = cjk_token_ids(tok)
     stop_ids = {tok.eos_token_id, end_turn_id(tok)}
 
     def cjk_frac(gens):
-        """Share of completion tokens (up to the stop token) that are CJK."""
-        toks = [t for g in gens for t in itertools.takewhile(lambda t: t not in stop_ids, g)]
-        return sum(t in cjk_ids for t in toks) / max(len(toks), 1)
+        """cjk_share of the completions up to the stop token."""
+        return cjk_share(tok.decode(list(itertools.takewhile(lambda t: t not in stop_ids, g))) for g in gens)
 
     def evaluate(n_rows):
         rows = list(range(min(n_rows, len(eval_acts))))

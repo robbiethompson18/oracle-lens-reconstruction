@@ -382,12 +382,12 @@ def strip_leading_ws(tok, phrases):
     return out
 
 
-# CJK ideographs, CJK punctuation and full-width forms; U+FFFD marks a token holding part of a multi-byte character
-_CJK = re.compile(r"[　-〿㐀-鿿＀-￯�]")
-
-
-def cjk_token_ids(tok):
-    return {i for i in range(len(tok)) if _CJK.search(tok.decode([i]))}
+def cjk_share(texts):
+    """CJK ideographs / (ideographs + Latin letters), on decoded text. Counting per token instead overcounts:
+    byte-level tokens of box-drawing characters and emoji decode to U+FFFD on their own, like split CJK."""
+    s = "".join(texts)
+    ideo = len(re.findall(r"[\u3400-\u9fff]", s))
+    return ideo / max(ideo + len(re.findall(r"[A-Za-z]", s)), 1)
 
 
 # ---------------------------------------------------------------- NNLS / FVE

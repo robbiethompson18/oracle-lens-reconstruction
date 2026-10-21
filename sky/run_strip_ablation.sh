@@ -25,5 +25,5 @@ leg 1 control false &
 wait
 # volumes don't outlive the pod: push adapters, logs, rollouts and the re-extracted activations to HF
 ~/venv/bin/hf upload robbiethompson2018/oracle-lens-qwen3.6-27b-pilot-strip-ablation $ROOT . \
-  --include "ckpt_rl_*/**" "logs/**" "acts/rl.*" "acts/eval.*" > $ROOT/logs/hf_upload.log 2>&1 && echo HF_UPLOADED
+  --include "ckpt_rl_*/**" --include "logs/**" --include "acts/rl.*" --include "acts/eval.*" > $ROOT/logs/hf_upload.log 2>&1 && echo HF_UPLOADED
 echo ABLATION_DONE
